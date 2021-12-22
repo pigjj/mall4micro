@@ -1,5 +1,14 @@
 package dto
 
+import (
+	"github.com/snownd/cake"
+)
+
+type CakeRequestConf struct {
+	cake.RequestConfig
+	Key string `param:"key"`
+}
+
 //
 // ConsulKvDTO
 // @Description: consul KV交互用DTO
