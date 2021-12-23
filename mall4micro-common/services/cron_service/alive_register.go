@@ -1,8 +1,8 @@
 package cron_service
 
 import (
-	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-auth/conf"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/dto"
@@ -14,14 +14,6 @@ type AliveRegister struct {
 	*dto.ConsulServiceDTO
 }
 
-//
-// ConsulServiceApi
-// @Description: cake连接consul处理service结构体
-//
-type ConsulServiceApi struct {
-	UpsertConsulService func(ctx context.Context, config *dto.CakeRequestService) error `method:"PUT" url:"" headers:"Content-Type:application/json"`
-}
-
 func NewAliveRegister(d *dto.ConsulServiceDTO) *AliveRegister {
 	return &AliveRegister{
 		d,
@@ -29,24 +21,31 @@ func NewAliveRegister(d *dto.ConsulServiceDTO) *AliveRegister {
 }
 
 func (ar *AliveRegister) Register() error {
-	client := http_client.NewHttpClient(ServiceRegisterMethod, fmt.Sprintf("%s/%s", conf.LocalSettings.Conf.Consul.Url, ServiceRegisterUrl), "application/json", nil)
-	_, err := ar.uploadService(client)
-	return err
+	client := http_client.NewHttpClient(ServiceRegisterMethod, fmt.Sprintf("%s%s", conf.LocalSettings.Conf.Consul.Url, ServiceRegisterUrl), "application/json", nil)
+	return ar.uploadService(client)
 }
 
-func (ar *AliveRegister) DeRegister() {
-
+func (ar *AliveRegister) DeRegister() error {
+	client := http_client.NewHttpClient(ServiceDeRegisterMethod, fmt.Sprintf("%s%s/%s", conf.LocalSettings.Conf.Consul.Url, ServiceDeRegisterUrl, ar.ID), "application/json", nil)
+	_, err := client.Request(nil)
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
-func (ar *AliveRegister) uploadService(client *http_client.Client) (*[]byte, error) {
+func (ar *AliveRegister) uploadService(client *http_client.Client) error {
 	buf, err := json.Marshal(ar.ConsulServiceDTO)
 	if err != nil {
-		panic(err)
+		return err
 	}
 	response, err := client.Request(buf)
 	bytes, err := ioutil.ReadAll(response.Body)
 	if err != nil {
-		return nil, err
+		return err
 	}
-	return &bytes, nil
+	if len(bytes) != 0 {
+		return errors.New(string(bytes))
+	}
+	return nil
 }

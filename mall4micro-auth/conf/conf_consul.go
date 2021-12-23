@@ -17,9 +17,15 @@ import (
 //
 type AuthConf struct {
 	Server struct {
-		Host  string `yaml:"host"`
-		Port  int    `yaml:"port"`
-		Debug bool   `yaml:"debug"`
+		Host           string      `yaml:"host"`
+		Port           int         `yaml:"port"`
+		Debug          bool        `yaml:"debug"`
+		ServerId       string      `yaml:"server_id"`
+		ServerName     string      `yaml:"server_name"`
+		ServerTags     []string    `yaml:"server_tags"`
+		Address        string      `yaml:"address"`
+		ServiceCheck   dto.Check   `yaml:"service_check"`
+		ServiceWeights dto.Weights `yaml:"service_weights"`
 	} `yaml:"server"`
 }
 

@@ -1,15 +1,15 @@
 package dto
 
 type Check struct {
-	DeregisterCriticalServiceAfter string   `json:"DeregisterCriticalServiceAfter"`
-	Args                           []string `json:"Args"`
-	Interval                       string   `json:"Interval"`
-	Timeout                        string   `json:"Timeout"`
+	DeregisterCriticalServiceAfter string   `json:"DeregisterCriticalServiceAfter" yaml:"deregister_critical_service_after"`
+	Args                           []string `json:"Args" yaml:"args"`
+	Interval                       string   `json:"Interval" yaml:"interval"`
+	Timeout                        string   `json:"Timeout" yaml:"timeout"`
 }
 
 type Weights struct {
-	Passing int `json:"Passing"`
-	Warning int `json:"Warning"`
+	Passing int `json:"Passing" yaml:"passing"`
+	Warning int `json:"Warning" yaml:"warning"`
 }
 
 type ConsulServiceDTO struct {
