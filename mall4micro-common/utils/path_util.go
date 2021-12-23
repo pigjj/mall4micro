@@ -2,6 +2,7 @@ package utils
 
 import (
 	"errors"
+	"fmt"
 	"log"
 	"os"
 	"path"
@@ -10,9 +11,13 @@ import (
 	"strings"
 )
 
-var PathSplitFlag string
+var PathSplitFlag = "/"
 
 func init() {
+	// windows下goland中运行or调试模式路径获取为linux模式
+	if os.Getenv("mall4micro") != "PROD" && os.Getenv("mall4micro") != "UAT" {
+		return
+	}
 	if runtime.GOOS == "windows" {
 		PathSplitFlag = "\\"
 	} else {
@@ -68,6 +73,7 @@ func ProjectBasePath() string {
 	if strings.Contains(dir, tmpDir) {
 		dir = getCurrentAbPathByCaller()
 	}
+	fmt.Println(dir)
 	var pathList []string
 	var basePath string
 	pathList = strings.Split(dir, PathSplitFlag)

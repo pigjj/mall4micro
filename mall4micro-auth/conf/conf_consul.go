@@ -1,22 +1,15 @@
 package conf
 
 import (
-	"context"
 	"encoding/base64"
-	commonDTO "github.com/jianghaibo12138/mall4micro/mall4micro-common/dto"
-	"github.com/snownd/cake"
+	"encoding/json"
+	"errors"
+	"fmt"
+	"github.com/jianghaibo12138/mall4micro/mall4micro-common/dto"
+	"github.com/jianghaibo12138/mall4micro/mall4micro-common/http_client"
 	"gopkg.in/yaml.v3"
+	"io/ioutil"
 )
-
-//
-// ConsulConfApi
-// @Description: cake连接consul配置结构体
-//
-type ConsulConfApi struct {
-	GetConsulConf    func(ctx context.Context, config *commonDTO.CakeRequestConf) ([]commonDTO.ConsulKvDTO, error) `method:"GET" url:"/kv/:file_name" headers:"Content-Type:application/json"`
-	UpsertConsulConf func(ctx context.Context, config *commonDTO.CakeRequestConf) error                            `method:"PUT" url:"/kv/:file_name" headers:"Content-Type:application/json"`
-	DeleteConsulConf func(ctx context.Context, config *commonDTO.CakeRequestConf) ([]commonDTO.ConsulKvDTO, error) `method:"DELETE" url:"/kv/:file_name" headers:"Content-Type:application/json"`
-}
 
 //
 // AuthConf
@@ -35,25 +28,27 @@ type AuthConf struct {
 // @Description: 从consul下载配置
 // @Document:
 // @receiver af
-// @param fileName
-// @param api
+// @param client
 // @return error
 //
-func (af *AuthConf) downloadConf(fileName string, api *ConsulConfApi) error {
-	kvs, err := api.GetConsulConf(context.Background(), &commonDTO.CakeRequestConf{
-		FileName: fileName,
-	})
+func (af *AuthConf) downloadConf(client *http_client.Client) error {
+	response, err := client.Request(nil)
 	if err != nil {
 		return err
 	}
-	if len(kvs) != 1 {
-		return err
-	}
-	value := kvs[0].Value
-	data, err := base64.StdEncoding.DecodeString(value)
+	bytes, err := ioutil.ReadAll(response.Body)
 	if err != nil {
 		return err
 	}
+	var kvDTOs []dto.ConsulKvDTO
+	err = json.Unmarshal(bytes, &kvDTOs)
+	if err != nil {
+		return err
+	}
+	if len(kvDTOs) != 1 {
+		return errors.New("kv invalid")
+	}
+	data, err := base64.StdEncoding.DecodeString(kvDTOs[0].Value)
 	err = yaml.Unmarshal(data, af)
 	if err != nil {
 		return err
@@ -69,12 +64,6 @@ func (af *AuthConf) downloadConf(fileName string, api *ConsulConfApi) error {
 // @return error
 //
 func (af *AuthConf) LoadConf() error {
-	ck := cake.New()
-	defer ck.Close()
-	apiItf, err := ck.Build(&ConsulConfApi{}, cake.WithBaseURL(localSettings.Conf.Consul.Url))
-	if err != nil {
-		return err
-	}
-	api := apiItf.(*ConsulConfApi)
-	return af.downloadConf(localSettings.Conf.Consul.FileName, api)
+	client := http_client.NewHttpClient(KvGetMethod, fmt.Sprintf("%s%s/%s", LocalSettings.Conf.Consul.Url, KvGetUrl, LocalSettings.Conf.Consul.FileName), "application/json", nil)
+	return af.downloadConf(client)
 }

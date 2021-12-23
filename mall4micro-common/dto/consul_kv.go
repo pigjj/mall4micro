@@ -1,15 +1,5 @@
 package dto
 
-import (
-	"github.com/snownd/cake"
-)
-
-type CakeRequestConf struct {
-	cake.RequestConfig
-	FileName string `param:"file_name"`
-	Data     string `body:"application-json"`
-}
-
 //
 // ConsulKvDTO
 // @Description: consul KV交互用DTO

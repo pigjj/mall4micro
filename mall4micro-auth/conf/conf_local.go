@@ -54,7 +54,7 @@ func loadLocalConf() {
 	if err != nil {
 		panic(err)
 	}
-	err = yaml.Unmarshal(yamlFile, localSettings)
+	err = yaml.Unmarshal(yamlFile, LocalSettings)
 	if err != nil {
 		panic(err)
 	}

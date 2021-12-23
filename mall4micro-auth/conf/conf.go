@@ -1,6 +1,6 @@
 package conf
 
-var localSettings = new(YmlLocalConf)
+var LocalSettings = new(YmlLocalConf)
 var Settings = new(AuthConf)
 
 func init() {
