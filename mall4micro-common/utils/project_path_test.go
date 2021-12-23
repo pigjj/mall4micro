@@ -7,14 +7,13 @@ import (
 
 func TestProjectBasePath(t *testing.T) {
 	tests := []struct {
-		name        string
-		projectName string
+		name string
 	}{
-		{name: "c1", projectName: "mall4micro-common"},
+		{name: "c1"},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := ProjectBasePath(tt.projectName)
+			got := ProjectBasePath()
 			fmt.Println(got)
 		})
 	}

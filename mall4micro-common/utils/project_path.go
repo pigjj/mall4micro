@@ -2,7 +2,6 @@ package utils
 
 import (
 	"errors"
-	"fmt"
 	"log"
 	"os"
 	"path"
@@ -15,18 +14,16 @@ import (
 // projectAbPath
 // @Description: 通过给定路径截取所需项目名称的绝对路径
 // @Document:
-// @param projectName
 // @param pathList
 // @return []string
 //
-func projectAbPath(projectName string, pathList []string) []string {
-	fmt.Println(pathList)
+func projectAbPath(pathList []string) []string {
 	for i, v := range pathList {
-		if v == projectName {
+		if v == "mall4micro" {
 			return pathList[:i+1]
 		}
 	}
-	panic(errors.New("invalid project name"))
+	panic(errors.New("str 'mall4micro' not found"))
 }
 
 // 获取当前执行文件绝对路径
@@ -49,7 +46,7 @@ func getCurrentAbPathByCaller() string {
 	return abPath
 }
 
-func ProjectBasePath(projectName string) string {
+func ProjectBasePath() string {
 	dir := getCurrentAbPathByExecutable()
 	tmpDir, _ := filepath.EvalSymlinks(os.TempDir())
 	if strings.Contains(dir, tmpDir) {
@@ -59,10 +56,10 @@ func ProjectBasePath(projectName string) string {
 	var basePath string
 	if runtime.GOOS == "windows" {
 		pathList = strings.Split(dir, "\\")
-		basePath = strings.Join(projectAbPath(projectName, pathList), "\\")
+		basePath = strings.Join(projectAbPath(pathList), "\\")
 	} else {
 		pathList = strings.Split(dir, "/")
-		basePath = strings.Join(projectAbPath(projectName, pathList), "/")
+		basePath = strings.Join(projectAbPath(pathList), "/")
 	}
 	return basePath
 }
