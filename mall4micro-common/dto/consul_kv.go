@@ -6,7 +6,8 @@ import (
 
 type CakeRequestConf struct {
 	cake.RequestConfig
-	Key string `param:"key"`
+	FileName string `param:"file_name"`
+	Data     string `body:"application-json"`
 }
 
 //

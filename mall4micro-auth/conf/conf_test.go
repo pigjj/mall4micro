@@ -2,7 +2,7 @@ package conf
 
 import "testing"
 
-func TestAuthConf_LoadConf(t *testing.T) {
+func Test_loadLocalConf(t *testing.T) {
 	tests := []struct {
 		name string
 	}{
@@ -10,9 +10,7 @@ func TestAuthConf_LoadConf(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			af := &AuthConf{}
-			err := af.LoadConf()
-			t.Logf("err: %+v, conf: %+v", err, af)
+			loadLocalConf()
 		})
 	}
 }
