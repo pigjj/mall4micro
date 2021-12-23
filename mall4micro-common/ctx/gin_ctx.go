@@ -2,15 +2,15 @@ package ctx
 
 import (
 	"github.com/gin-gonic/gin"
-	"go.uber.org/zap"
+	"github.com/jianghaibo12138/mall4micro/mall4micro-common/log"
 )
 
 type GinContext struct {
 	*gin.Context
-	Logger *zap.Logger
+	Logger *log.ZapLogger
 }
 
-func NewGinContext(fn func(gtx GinContext), logger *zap.Logger) gin.HandlerFunc {
+func NewGinContext(fn func(gtx GinContext), logger *log.ZapLogger) gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		fn(GinContext{ctx, logger})
 	}
