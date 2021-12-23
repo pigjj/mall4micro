@@ -10,6 +10,16 @@ import (
 	"strings"
 )
 
+var PathSplitFlag string
+
+func init() {
+	if runtime.GOOS == "windows" {
+		PathSplitFlag = "\\"
+	} else {
+		PathSplitFlag = "/"
+	}
+}
+
 //
 // projectAbPath
 // @Description: 通过给定路径截取所需项目名称的绝对路径
@@ -46,6 +56,12 @@ func getCurrentAbPathByCaller() string {
 	return abPath
 }
 
+//
+// ProjectBasePath
+// @Description: 获取项目根目录
+// @Document:
+// @return string
+//
 func ProjectBasePath() string {
 	dir := getCurrentAbPathByExecutable()
 	tmpDir, _ := filepath.EvalSymlinks(os.TempDir())
@@ -54,12 +70,22 @@ func ProjectBasePath() string {
 	}
 	var pathList []string
 	var basePath string
-	if runtime.GOOS == "windows" {
-		pathList = strings.Split(dir, "\\")
-		basePath = strings.Join(projectAbPath(pathList), "\\")
-	} else {
-		pathList = strings.Split(dir, "/")
-		basePath = strings.Join(projectAbPath(pathList), "/")
-	}
+	pathList = strings.Split(dir, PathSplitFlag)
+	basePath = strings.Join(projectAbPath(pathList), PathSplitFlag)
 	return basePath
+}
+
+//
+// IsDir
+// @Description: 判断给定路径是否是文件夹
+// @Document:
+// @param path
+// @return bool
+//
+func IsDir(path string) bool {
+	s, err := os.Stat(path)
+	if err != nil {
+		return false
+	}
+	return s.IsDir()
 }

@@ -8,22 +8,25 @@
 # @Version: V0.0.1
 # @license: (C) Copyright 2017-2030, Bito Robotics Co.Ltd.
 # @desc:
-
+import json
 import os
-import yaml
+
 import requests
+import yaml
 
 YAML_CONF_PATH = os.path.join(os.path.dirname(__file__), "yaml_conf")
 
 CONSUL_URL = "http://127.0.0.1:8500/v1/kv"
 TOKEN = ""
 
+HEADER = {"Authorization": TOKEN, "Content-Type": "application.json"}
+
 
 def upload_config_2_consul(file_name):
     with open(os.path.join(YAML_CONF_PATH, file_name)) as f:
-        conf_bytes = yaml.load(f, Loader=yaml.FullLoader)
+        conf_lines = f.readlines()
     response = requests.put(
-        "{}/{}".format(CONSUL_URL, file_name), headers={"Authorization": TOKEN}, data=conf_bytes)
+        "{}/{}".format(CONSUL_URL, file_name), headers=HEADER, data="".join(conf_lines))
     return response.status_code == 200
 
 

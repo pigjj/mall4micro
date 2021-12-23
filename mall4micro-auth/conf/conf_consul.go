@@ -71,14 +71,10 @@ func (af *AuthConf) downloadConf(fileName string, api *ConsulConfApi) error {
 func (af *AuthConf) LoadConf() error {
 	ck := cake.New()
 	defer ck.Close()
-	apiItf, err := ck.Build(&ConsulConfApi{}, cake.WithBaseURL(LocalSettings.Conf.Consul.Url))
+	apiItf, err := ck.Build(&ConsulConfApi{}, cake.WithBaseURL(localSettings.Conf.Consul.Url))
 	if err != nil {
 		return err
 	}
 	api := apiItf.(*ConsulConfApi)
-	return af.downloadConf(LocalSettings.Conf.Consul.FileName, api)
-}
-
-func (af *AuthConf) UploadConf() error {
-	return nil
+	return af.downloadConf(localSettings.Conf.Consul.FileName, api)
 }
