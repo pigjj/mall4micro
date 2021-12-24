@@ -1,10 +1,10 @@
-package cron_service
+package discovery
 
 import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-auth/conf"
+	"github.com/jianghaibo12138/mall4micro/mall4micro-common/conf"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/dto"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/http_client"
 	"io/ioutil"

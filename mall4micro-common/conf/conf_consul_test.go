@@ -10,7 +10,7 @@ func TestAuthConf_LoadConf(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			af := &AuthConf{}
+			af := &MicroConf{}
 			err := af.LoadConf()
 			t.Logf("err: %+v, conf: %+v", err, af)
 		})

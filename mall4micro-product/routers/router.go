@@ -9,7 +9,7 @@ import (
 	commonHandler "github.com/jianghaibo12138/mall4micro/mall4micro-common/pkg/handlers"
 )
 
-const MicroServiceName = "mall4micro-auth"
+const MicroServiceName = "mall4micro-product"
 
 var logger *log.ZapLogger
 
@@ -20,7 +20,7 @@ func init() {
 func InitRouter() *gin.Engine {
 	r := gin.Default()
 	r.Use(gzip.Gzip(gzip.DefaultCompression))
-	url := r.Group("/api/auth")
+	url := r.Group("/api/product")
 	{
 		url.GET("/ping", ctx.NewGinContext(commonHandler.PingHandler, logger))
 	}

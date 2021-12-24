@@ -1,4 +1,4 @@
-package cron_service
+package discovery
 
 import (
 	"github.com/google/uuid"

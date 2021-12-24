@@ -12,10 +12,10 @@ import (
 )
 
 //
-// AuthConf
+// MicroConf
 // @Description: Auth服务配置接收
 //
-type AuthConf struct {
+type MicroConf struct {
 	Server struct {
 		Host           string      `yaml:"host"`
 		Port           int         `yaml:"port"`
@@ -37,7 +37,7 @@ type AuthConf struct {
 // @param client
 // @return error
 //
-func (af *AuthConf) downloadConf(client *http_client.Client) error {
+func (af *MicroConf) downloadConf(client *http_client.Client) error {
 	response, err := client.Request(nil)
 	if err != nil {
 		return err
@@ -69,7 +69,7 @@ func (af *AuthConf) downloadConf(client *http_client.Client) error {
 // @receiver af
 // @return error
 //
-func (af *AuthConf) LoadConf() error {
+func (af *MicroConf) LoadConf() error {
 	client := http_client.NewHttpClient(KvGetMethod, fmt.Sprintf("%s%s/%s", LocalSettings.Conf.Consul.Url, KvGetUrl, LocalSettings.Conf.Consul.FileName), "application/json", nil)
 	return af.downloadConf(client)
 }

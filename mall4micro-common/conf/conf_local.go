@@ -45,11 +45,12 @@ func loadEnv() string {
 // loadLocalConf
 // @Description: 记载本地配置数据
 // @Document:
+// @Param: microServiceName
 //
-func loadLocalConf() {
+func loadLocalConf(microServiceName string) {
 	projBasePath := utils.ProjectBasePath()
 	confFileName := loadEnv()
-	projBasePath = fmt.Sprintf("%s%small4micro-auth%sconf%s%s", projBasePath, utils.PathSplitFlag, utils.PathSplitFlag, utils.PathSplitFlag, confFileName)
+	projBasePath = fmt.Sprintf("%s%s%s%sconf%s%s", projBasePath, utils.PathSplitFlag, microServiceName, utils.PathSplitFlag, utils.PathSplitFlag, confFileName)
 	yamlFile, err := ioutil.ReadFile(projBasePath)
 	if err != nil {
 		panic(err)

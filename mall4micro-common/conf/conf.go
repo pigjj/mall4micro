@@ -1,8 +1,12 @@
 package conf
 
-type ItfConf interface {
-	Reload()
-}
+var LocalSettings = new(YmlLocalConf)
+var Settings = new(MicroConf)
 
-type YmlItfConf interface {
+func ReloadConf(microServiceName string) {
+	loadLocalConf(microServiceName)
+	err := Settings.LoadConf()
+	if err != nil {
+		panic(err)
+	}
 }

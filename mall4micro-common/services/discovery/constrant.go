@@ -1,4 +1,4 @@
-package cron_service
+package discovery
 
 const (
 	ServiceRegisterMethod   = "PUT"
