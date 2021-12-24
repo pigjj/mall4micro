@@ -3,7 +3,7 @@ server:
   port: 8080
   debug: false
   server_id: 614c21d4-c56e-4c54-9e5b-3f53deb73aca
-  server_name: mall4micro-user
+  server_name: mall4micro-auth
   server_tags:
     - auth
   address: 192.168.0.115

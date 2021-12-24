@@ -4,10 +4,15 @@ import (
 	"crypto/md5"
 	"crypto/sha1"
 	"encoding/hex"
+	"errors"
 	"github.com/google/uuid"
 )
 
 var alternativeStr = []string{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"}
+
+var (
+	ErrPasswordNotEqual = errors.New("password not equal")
+)
 
 //
 // PasswordUtil
@@ -54,6 +59,7 @@ func (p *PasswordUtil) generate(password, saltStr string) string {
 // @param saltStr
 // @return bool
 //
-func (p *PasswordUtil) Equal(password, hashed, saltStr string) bool {
-	return hashed == p.generate(password, saltStr)
+func (p *PasswordUtil) Equal(password, hashed, saltStr string) (bool, error) {
+	hashedPassword := p.generate(password, saltStr)
+	return hashed == hashedPassword, ErrPasswordNotEqual
 }

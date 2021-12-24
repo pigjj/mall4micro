@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func PingHandler(gtx ctx.GinContext) {
+func PingHandler(gtx *ctx.GinContext) {
 	gtx.Logger.Infof("[PingHandler] now: %+v", time.Now())
 	gtx.JsonWithData(response.SuccessResponse, "ping")
 }

@@ -19,9 +19,9 @@ type GinContext struct {
 // @param logger
 // @return gin.HandlerFunc
 //
-func NewGinContext(fn func(gtx GinContext), logger *log.ZapLogger) gin.HandlerFunc {
+func NewGinContext(fn func(gtx *GinContext), logger *log.ZapLogger) gin.HandlerFunc {
 	return func(ctx *gin.Context) {
-		fn(GinContext{ctx, logger})
+		fn(&GinContext{ctx, logger})
 	}
 }
 

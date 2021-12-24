@@ -1,4 +1,4 @@
 conf:
   consul:
     url: http://127.0.0.1:8500/v1
-    file_name: auth-dev.yml
+    file_name: user-dev.yml
