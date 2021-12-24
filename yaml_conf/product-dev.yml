@@ -17,3 +17,12 @@ server:
   service_weights:
     passing: 10
     warning: 1
+
+mysql:
+  host: 0.0.0.0
+  port: 3306
+  user: root
+  password: 123456
+  database: mall4micro-product
+  max_idle_conn: 900
+  max_conn: 1000

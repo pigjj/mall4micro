@@ -13,7 +13,7 @@ func TestNewAliveRegister(t *testing.T) {
 	c1 := args{
 		&dto.ConsulServiceDTO{
 			ID:      uuid.New().String(),
-			Name:    "mall4micro-auth",
+			Name:    "mall4micro-user",
 			Tags:    []string{"auth"},
 			Address: "192.168.0.105",
 			Port:    8080,
@@ -40,7 +40,7 @@ func TestAliveRegister_Register(t *testing.T) {
 	f := fields{
 		ConsulServiceDTO: &dto.ConsulServiceDTO{
 			ID:      uuid.New().String(),
-			Name:    "mall4micro-auth",
+			Name:    "mall4micro-user",
 			Tags:    []string{"auth"},
 			Address: "192.168.0.105",
 			Port:    8080,

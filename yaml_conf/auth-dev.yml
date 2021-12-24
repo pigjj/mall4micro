@@ -3,7 +3,7 @@ server:
   port: 8080
   debug: true
   server_id: 614c21d4-c56e-4c54-9e5b-3f53deb73aca
-  server_name: mall4micro-auth
+  server_name: mall4micro-user
   server_tags:
     - auth
   address: 192.168.0.115
@@ -17,3 +17,12 @@ server:
   service_weights:
     passing: 10
     warning: 1
+
+mysql:
+  host: 0.0.0.0
+  port: 3306
+  user: root
+  password: 123456
+  database: mall4micro-user
+  max_idle_conn: 900
+  max_conn: 1000

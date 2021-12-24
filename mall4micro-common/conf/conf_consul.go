@@ -27,6 +27,15 @@ type MicroConf struct {
 		ServiceCheck   dto.Check   `yaml:"service_check"`
 		ServiceWeights dto.Weights `yaml:"service_weights"`
 	} `yaml:"server"`
+	Mysql struct {
+		Host        string `yaml:"host"`
+		Port        int    `yaml:"port"`
+		User        string `yaml:"user"`
+		Password    string `yaml:"password"`
+		Database    string `yaml:"database"`
+		MaxIdleConn int    `yaml:"max_idle_conn"`
+		MaxConn     int    `yaml:"max_conn"`
+	} `yaml:"mysql"`
 }
 
 //

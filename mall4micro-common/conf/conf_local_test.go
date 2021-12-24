@@ -10,7 +10,7 @@ func Test_loadLocalConf(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			loadLocalConf("mall4micro-auth")
+			loadLocalConf("mall4micro-user")
 		})
 	}
 }

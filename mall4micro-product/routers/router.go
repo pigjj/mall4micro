@@ -6,7 +6,7 @@ import (
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/conf"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/ctx"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/log"
-	commonHandler "github.com/jianghaibo12138/mall4micro/mall4micro-common/pkg/handlers"
+	commonHandlers "github.com/jianghaibo12138/mall4micro/mall4micro-common/pkg/handlers"
 )
 
 const MicroServiceName = "mall4micro-product"
@@ -22,7 +22,7 @@ func InitRouter() *gin.Engine {
 	r.Use(gzip.Gzip(gzip.DefaultCompression))
 	url := r.Group("/api/product")
 	{
-		url.GET("/ping", ctx.NewGinContext(commonHandler.PingHandler, logger))
+		url.GET("/ping", ctx.NewGinContext(commonHandlers.PingHandler, logger))
 	}
 	return r
 }

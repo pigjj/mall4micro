@@ -13,6 +13,7 @@ import (
 
 type ZapLogger struct {
 	*zap.SugaredLogger
+	MicroServiceName string
 }
 
 func init() {
@@ -84,7 +85,7 @@ func InitZapLogger(moduleName string, debug bool) *ZapLogger {
 	core := zapcore.NewTee(cores...)
 
 	log := zap.New(core, zap.AddCaller()) // 需要传入 zap.AddCaller() 才会显示打日志点的文件名和行数, 有点小坑
-	return &ZapLogger{log.Sugar()}
+	return &ZapLogger{log.Sugar(), moduleName}
 }
 
 //
@@ -115,57 +116,57 @@ func getWriter(filename string) io.Writer {
 }
 
 func (z *ZapLogger) Debug(args ...interface{}) {
-	z.SugaredLogger.Debug(args...)
+	z.SugaredLogger.Debug(append([]interface{}{fmt.Sprintf("<%s>", z.MicroServiceName)}, args...))
 }
 
 func (z *ZapLogger) Debugf(template string, args ...interface{}) {
-	z.SugaredLogger.Debugf(template, args...)
+	z.SugaredLogger.Debugf(fmt.Sprintf("<%s> %s", z.MicroServiceName, template), args...)
 }
 
 func (z *ZapLogger) Info(args ...interface{}) {
-	z.SugaredLogger.Info(args...)
+	z.SugaredLogger.Info(append([]interface{}{fmt.Sprintf("<%s>", z.MicroServiceName)}, args...))
 }
 
 func (z *ZapLogger) Infof(template string, args ...interface{}) {
-	z.SugaredLogger.Infof(template, args...)
+	z.SugaredLogger.Infof(fmt.Sprintf("<%s> %s", z.MicroServiceName, template), args...)
 }
 
 func (z *ZapLogger) Warn(args ...interface{}) {
-	z.SugaredLogger.Warn(args...)
+	z.SugaredLogger.Warn(append([]interface{}{fmt.Sprintf("<%s>", z.MicroServiceName)}, args...))
 }
 
 func (z *ZapLogger) Warnf(template string, args ...interface{}) {
-	z.SugaredLogger.Warnf(template, args...)
+	z.SugaredLogger.Warnf(fmt.Sprintf("<%s> %s", z.MicroServiceName, template), args...)
 }
 
 func (z *ZapLogger) Error(args ...interface{}) {
-	z.SugaredLogger.Error(args...)
+	z.SugaredLogger.Error(append([]interface{}{fmt.Sprintf("<%s>", z.MicroServiceName)}, args...))
 }
 
 func (z *ZapLogger) Errorf(template string, args ...interface{}) {
-	z.SugaredLogger.Errorf(template, args...)
+	z.SugaredLogger.Errorf(fmt.Sprintf("<%s> %s", z.MicroServiceName, template), args...)
 }
 
 func (z *ZapLogger) DPanic(args ...interface{}) {
-	z.SugaredLogger.DPanic(args...)
+	z.SugaredLogger.DPanic(append([]interface{}{fmt.Sprintf("<%s>", z.MicroServiceName)}, args...))
 }
 
 func (z *ZapLogger) DPanicf(template string, args ...interface{}) {
-	z.SugaredLogger.DPanicf(template, args...)
+	z.SugaredLogger.DPanicf(fmt.Sprintf("<%s> %s", z.MicroServiceName, template), args...)
 }
 
 func (z *ZapLogger) Panic(args ...interface{}) {
-	z.SugaredLogger.Panic(args...)
+	z.SugaredLogger.Panic(append([]interface{}{fmt.Sprintf("<%s>", z.MicroServiceName)}, args...))
 }
 
 func (z *ZapLogger) Panicf(template string, args ...interface{}) {
-	z.SugaredLogger.Panicf(template, args...)
+	z.SugaredLogger.Panicf(fmt.Sprintf("<%s> %s", z.MicroServiceName, template), args...)
 }
 
 func (z *ZapLogger) Fatal(args ...interface{}) {
-	z.SugaredLogger.Fatal(args...)
+	z.SugaredLogger.Fatal(append([]interface{}{fmt.Sprintf("<%s>", z.MicroServiceName)}, args...))
 }
 
 func (z *ZapLogger) Fatalf(template string, args ...interface{}) {
-	z.SugaredLogger.Fatalf(template, args...)
+	z.SugaredLogger.Fatalf(fmt.Sprintf("<%s> %s", z.MicroServiceName, template), args...)
 }

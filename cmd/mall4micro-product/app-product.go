@@ -16,12 +16,12 @@ import (
 )
 
 func main() {
-	conf.ReloadConf("mall4micro-product")
+	conf.ReloadConf(routers.MicroServiceName)
 	if !conf.Settings.Server.Debug {
 		gin.SetMode(gin.ReleaseMode)
 	}
 
-	logger := log.InitZapLogger("mall4micro-product", conf.Settings.Server.Debug)
+	logger := log.InitZapLogger(routers.MicroServiceName, conf.Settings.Server.Debug)
 	r := routers.InitRouter()
 
 	serverUrl := fmt.Sprintf("%s:%d", conf.Settings.Server.Host, conf.Settings.Server.Port)
