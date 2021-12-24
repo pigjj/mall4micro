@@ -16,7 +16,14 @@ import (
 	"time"
 )
 
-func ServiceDiscovery() (*cron_service.AliveRegister, error) {
+//
+// ServiceRegister
+// @Description: 服务自注册
+// @Document:
+// @return *cron_service.AliveRegister
+// @return error
+//
+func ServiceRegister() (*cron_service.AliveRegister, error) {
 	serviceRegisterDto := &dto.ConsulServiceDTO{
 		ID:             conf.Settings.Server.ServerId,
 		Name:           conf.Settings.Server.ServerName,
@@ -44,9 +51,10 @@ func main() {
 		Handler: r,
 	}
 
-	_, err := ServiceDiscovery()
+	_, err := ServiceRegister()
 	if err != nil {
 		logger.Fatalf("[mall4micro-auth] Service Discovery failed: %+v", err)
+		return
 	}
 
 	logger.Infof("[mall4micro-auth] Server start on: %s", serverUrl)

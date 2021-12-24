@@ -2,7 +2,6 @@ package utils
 
 import (
 	"errors"
-	"fmt"
 	"log"
 	"os"
 	"path"
@@ -73,7 +72,6 @@ func ProjectBasePath() string {
 	if strings.Contains(dir, tmpDir) {
 		dir = getCurrentAbPathByCaller()
 	}
-	fmt.Println(dir)
 	var pathList []string
 	var basePath string
 	pathList = strings.Split(dir, PathSplitFlag)

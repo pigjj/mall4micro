@@ -8,15 +8,13 @@
 # @Version: V0.0.1
 # @license: (C) Copyright 2017-2030, Bito Robotics Co.Ltd.
 # @desc:
-import json
 import os
 
 import requests
-import yaml
 
 YAML_CONF_PATH = os.path.join(os.path.dirname(__file__), "yaml_conf")
 
-CONSUL_URL = "http://192.168.118.131:8500/v1/kv"
+CONSUL_URL = "http://127.0.0.1:8500/v1/kv"
 TOKEN = ""
 
 HEADER = {"Authorization": TOKEN, "Content-Type": "application.json"}

@@ -1,0 +1,25 @@
+{
+  "ID": "d183d513-74d2-4dec-bd8b-fb3e6cb5b834",
+  "Service": "redis",
+  "Tags": [
+    "redis"
+  ],
+  "TaggedAddresses": {
+    "lan": {
+      "address": "192.168.7.5",
+      "port": 6377
+    }
+  },
+  "Meta": {
+    "redis_version": "4.0"
+  },
+  "Namespace": "default",
+  "Port": 6377,
+  "Address": "192.168.7.5",
+  "EnableTagOverride": false,
+  "Datacenter": "dc1",
+  "Weights": {
+    "Passing": 10,
+    "Warning": 1
+  }
+}
