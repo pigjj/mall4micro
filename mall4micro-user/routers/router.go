@@ -7,15 +7,14 @@ import (
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/ctx"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/log"
 	commonHandlers "github.com/jianghaibo12138/mall4micro/mall4micro-common/pkg/handlers"
+	"github.com/jianghaibo12138/mall4micro/mall4micro-user/constant"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-user/pkg/handlers"
 )
-
-const MicroServiceName = "mall4micro-user"
 
 var logger *log.ZapLogger
 
 func init() {
-	logger = log.InitZapLogger(MicroServiceName, conf.Settings.Server.Debug)
+	logger = log.InitZapLogger(constant.MicroServiceName, conf.Settings.HttpServer.Debug)
 }
 
 //

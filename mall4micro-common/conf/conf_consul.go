@@ -12,23 +12,27 @@ import (
 	"os"
 )
 
+type server struct {
+	AutoRegister   bool        `yaml:"auto_register"`
+	Host           string      `yaml:"host"`
+	Debug          bool        `yaml:"debug"`
+	Port           int         `yaml:"port"`
+	ServerId       string      `yaml:"server_id"`
+	ServerName     string      `yaml:"server_name"`
+	ServerTags     []string    `yaml:"server_tags"`
+	Address        string      `yaml:"address"`
+	ServiceCheck   dto.Check   `yaml:"service_check"`
+	ServiceWeights dto.Weights `yaml:"service_weights"`
+}
+
 //
 // MicroConf
 // @Description: Auth服务配置接收
 //
 type MicroConf struct {
-	Server struct {
-		Host           string      `yaml:"host"`
-		Port           int         `yaml:"port"`
-		Debug          bool        `yaml:"debug"`
-		ServerId       string      `yaml:"server_id"`
-		ServerName     string      `yaml:"server_name"`
-		ServerTags     []string    `yaml:"server_tags"`
-		Address        string      `yaml:"address"`
-		ServiceCheck   dto.Check   `yaml:"service_check"`
-		ServiceWeights dto.Weights `yaml:"service_weights"`
-	} `yaml:"server"`
-	Mysql struct {
+	HttpServer server `yaml:"http_server"`
+	GrpcServer server `yaml:"grpc_server"`
+	Mysql      struct {
 		Host        string `yaml:"host"`
 		Port        int    `yaml:"port"`
 		User        string `yaml:"user"`
@@ -37,6 +41,9 @@ type MicroConf struct {
 		MaxIdleConn int    `yaml:"max_idle_conn"`
 		MaxConn     int    `yaml:"max_conn"`
 	} `yaml:"mysql"`
+	Authorized struct {
+		IgnoreUrls []string `yaml:"ignore_urls"`
+	} `yaml:"authorized"`
 }
 
 //

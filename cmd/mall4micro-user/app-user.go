@@ -17,29 +17,29 @@ import (
 
 func main() {
 	conf.ReloadConf(routers.MicroServiceName)
-	if !conf.Settings.Server.Debug {
+	if !conf.Settings.HttpServer.Debug {
 		gin.SetMode(gin.ReleaseMode)
 	}
 
-	logger := log.InitZapLogger(routers.MicroServiceName, conf.Settings.Server.Debug)
+	logger := log.InitZapLogger(routers.MicroServiceName, conf.Settings.HttpServer.Debug)
 	r := routers.InitRouter()
 
-	serverUrl := fmt.Sprintf("%s:%d", conf.Settings.Server.Host, conf.Settings.Server.Port)
+	serverUrl := fmt.Sprintf("%s:%d", conf.Settings.HttpServer.Host, conf.Settings.HttpServer.Port)
 	srv := &http.Server{
 		Addr:    serverUrl,
 		Handler: r,
 	}
-
-	_, err := discovery.ServiceRegister()
-	if err != nil {
-		logger.Fatalf("[mall4micro-user] Service Discovery failed: %+v", err)
-		return
+	if conf.Settings.HttpServer.AutoRegister {
+		_, err := discovery.ServiceRegister()
+		if err != nil {
+			logger.Fatalf("[mall4micro-user] Service Discovery failed: %+v", err)
+			return
+		}
 	}
-
-	logger.Infof("[mall4micro-user] Server start on: %s", serverUrl)
+	logger.Infof("[mall4micro-user] HttpServer start on: %s", serverUrl)
 	go func() {
 		if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
-			logger.Fatalf("[mall4micro-user] Server listen: %s", err)
+			logger.Fatalf("[mall4micro-user] HttpServer listen: %s", err)
 		}
 	}()
 	quit := make(chan os.Signal, 1)
@@ -50,7 +50,7 @@ func main() {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 	if err := srv.Shutdown(ctx); err != nil {
-		logger.Fatalf("[mall4micro-user] Server forced to shutdown: %s", err.Error())
+		logger.Fatalf("[mall4micro-user] HttpServer forced to shutdown: %s", err.Error())
 	}
 	logger.Info("[mall4micro-user] Shutdown server...")
 }

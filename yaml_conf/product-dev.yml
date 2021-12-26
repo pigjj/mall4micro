@@ -1,4 +1,5 @@
-server:
+http_server:
+  auto_register: false
   host: 0.0.0.0
   port: 8081
   debug: true
@@ -17,6 +18,31 @@ server:
   service_weights:
     passing: 10
     warning: 1
+
+grpc_server:
+  auto_register: false
+  host: 0.0.0.0
+  port: 8091
+  debug: true
+  server_id: 614c21d4-c56e-4c54-9e5b-3f53deb73aca
+  server_name: mall4micro-auth
+  server_tags:
+    - auth
+  address: 192.168.0.115
+  service_check:
+    deregister_critical_service_after: 90s
+    args:
+      - curl
+      - http://192.168.0.115:8080/api/auth/ping
+    interval: 10s
+    timeout: 2s
+  service_weights:
+    passing: 10
+    warning: 1
+
+authorized:
+  ignore_urls:
+    - "/api/auth/login"
 
 mysql:
   host: 0.0.0.0

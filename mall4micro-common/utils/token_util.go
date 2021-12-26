@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"fmt"
+	"errors"
 	"github.com/golang-jwt/jwt"
 	"time"
 )
@@ -12,6 +12,12 @@ type TokenUtil struct {
 	Mobile   string
 	Status   int
 }
+
+var (
+	ErrTokenInvalid      = errors.New("token invalid")
+	ErrParseToken        = errors.New("parse token")
+	ErrUnexpectedSigning = errors.New("unexpected signing method")
+)
 
 var hmacSampleSecret = []byte("346b281f-9282-49fe-9970-b18f9fdac659")
 
@@ -29,24 +35,27 @@ func (t *TokenUtil) Generate() (string, error) {
 	return token.SignedString(hmacSampleSecret)
 }
 
-func (t *TokenUtil) Parse(tokenStr string) bool {
+func (t *TokenUtil) Parse(tokenStr string) error {
 	token, err := jwt.Parse(tokenStr, func(token *jwt.Token) (interface{}, error) {
 		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
-			return nil, fmt.Errorf("unexpected signing method: %v", token.Header["alg"])
+			return nil, ErrUnexpectedSigning
 		}
 		// hmacSampleSecret is a []byte containing your secret, e.g. []byte("my_secret_key")
 		return hmacSampleSecret, nil
 	})
-	if err != nil || !token.Valid {
-		return false
+	if err != nil {
+		return err
+	}
+	if !token.Valid {
+		return ErrTokenInvalid
 	}
 	claims, ok := token.Claims.(jwt.MapClaims)
 	if !ok {
-		return false
+		return ErrParseToken
 	}
 	t.Username = claims["username"].(string)
 	t.Email = claims["email"].(string)
 	t.Mobile = claims["mobile"].(string)
 	t.Status = int(claims["status"].(float64))
-	return true
+	return nil
 }

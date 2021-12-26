@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option go_package = "github.com/jianghaibo12138/mall4micro/mall4micro-auth/grpc_dto";
+
+import "reply.proto";
+
+package dto;
+
+service RpcAuthenticateSrv {
+  rpc CallRpcAuthenticateSrv (RpcAuthenticateRequest) returns (RpcAuthenticateReply) {}
+}
+
+message RpcAuthenticateRequest {
+  string token = 1;
+}
+
+message RpcAuthenticateReply {
+  RpcReply reply = 1;
+  string username = 2;
+  string email = 3;
+  string mobile = 4;
+  int64 status = 5;
+}

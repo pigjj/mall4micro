@@ -14,13 +14,13 @@ import (
 //
 func ServiceRegister() (*AliveRegister, error) {
 	serviceRegisterDto := &dto.ConsulServiceDTO{
-		ID:             conf.Settings.Server.ServerId,
-		Name:           conf.Settings.Server.ServerName,
-		Tags:           conf.Settings.Server.ServerTags,
-		Address:        conf.Settings.Server.Address,
-		Port:           conf.Settings.Server.Port,
-		ServiceCheck:   conf.Settings.Server.ServiceCheck,
-		ServiceWeights: conf.Settings.Server.ServiceWeights,
+		ID:             conf.Settings.HttpServer.ServerId,
+		Name:           conf.Settings.HttpServer.ServerName,
+		Tags:           conf.Settings.HttpServer.ServerTags,
+		Address:        conf.Settings.HttpServer.Address,
+		Port:           conf.Settings.HttpServer.Port,
+		ServiceCheck:   conf.Settings.HttpServer.ServiceCheck,
+		ServiceWeights: conf.Settings.HttpServer.ServiceWeights,
 	}
 	ar := NewAliveRegister(serviceRegisterDto)
 	return ar, ar.Register()
