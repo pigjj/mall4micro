@@ -21,12 +21,12 @@ func NewAliveRegister(d *dto.ConsulServiceDTO) *AliveRegister {
 }
 
 func (ar *AliveRegister) Register() error {
-	client := http_client.NewHttpClient(ServiceRegisterMethod, fmt.Sprintf("%s%s", conf.LocalSettings.Conf.Consul.Url, ServiceRegisterUrl), "application/json", nil)
+	client := http_client.NewHttpClient(ServiceRegisterMethod, fmt.Sprintf("%s%s", conf.LocalSettings.Conf.Consul.Url, ServiceRegisterUrl), "application/json", conf.LoadConsulAclHeader())
 	return ar.uploadService(client)
 }
 
 func (ar *AliveRegister) DeRegister() error {
-	client := http_client.NewHttpClient(ServiceDeRegisterMethod, fmt.Sprintf("%s%s/%s", conf.LocalSettings.Conf.Consul.Url, ServiceDeRegisterUrl, ar.ID), "application/json", nil)
+	client := http_client.NewHttpClient(ServiceDeRegisterMethod, fmt.Sprintf("%s%s/%s", conf.LocalSettings.Conf.Consul.Url, ServiceDeRegisterUrl, ar.ID), "application/json", conf.LoadConsulAclHeader())
 	_, err := client.Request(nil)
 	if err != nil {
 		return err

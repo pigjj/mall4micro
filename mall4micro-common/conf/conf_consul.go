@@ -9,6 +9,7 @@ import (
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/http_client"
 	"gopkg.in/yaml.v3"
 	"io/ioutil"
+	"os"
 )
 
 //
@@ -79,6 +80,18 @@ func (af *MicroConf) downloadConf(client *http_client.Client) error {
 // @return error
 //
 func (af *MicroConf) LoadConf() error {
-	client := http_client.NewHttpClient(KvGetMethod, fmt.Sprintf("%s%s/%s", LocalSettings.Conf.Consul.Url, KvGetUrl, LocalSettings.Conf.Consul.FileName), "application/json", nil)
+	client := http_client.NewHttpClient(KvGetMethod, fmt.Sprintf("%s%s/%s", LocalSettings.Conf.Consul.Url, KvGetUrl, LocalSettings.Conf.Consul.FileName), "application/json", LoadConsulAclHeader())
 	return af.downloadConf(client)
+}
+
+//
+// LoadConsulAclHeader
+// @Description: 通过环境变量组装consul acl请求头
+// @Document:
+// @return map[string]string
+//
+func LoadConsulAclHeader() map[string]string {
+	headers := make(map[string]string)
+	headers["X-Consul-Token"] = os.Getenv("CONSUL_TOKEN")
+	return headers
 }
