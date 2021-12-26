@@ -15,9 +15,9 @@ import requests
 YAML_CONF_PATH = os.path.join(os.path.dirname(__file__), "yaml_conf")
 
 CONSUL_URL = "http://127.0.0.1:8500/v1/kv"
-TOKEN = ""
+TOKEN = os.getenv("CONSUL_TOKEN")
 
-HEADER = {"Authorization": TOKEN, "Content-Type": "application.json"}
+HEADER = {"X-Consul-Token": TOKEN, "Content-Type": "application.json"}
 
 
 def upload_config_2_consul(file_name):
