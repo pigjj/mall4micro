@@ -4,6 +4,7 @@ import (
 	"errors"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/conn"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/ctx"
+	cm "github.com/jianghaibo12138/mall4micro/mall4micro-common/models"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/response"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-user/dao/mall_sys_group_permission_relation"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-user/dao/mall_sys_permission"
@@ -34,6 +35,9 @@ func CreatePermissionSrv(permissionDto *http_dto.PermissionDTO, user *http_dto.U
 	}
 	err = session.Transaction(func(tx *gorm.DB) error {
 		var permission = mall_sys_permission.MallSysPermission{
+			MallBase: cm.MallBase{
+				CreateUserId: user.ID,
+			},
 			PermissionName: permissionDto.PermissionName,
 			PermissionDesc: permissionDto.PermissionDesc,
 		}

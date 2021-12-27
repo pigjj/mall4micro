@@ -4,6 +4,7 @@ import (
 	"errors"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/conn"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/ctx"
+	cm "github.com/jianghaibo12138/mall4micro/mall4micro-common/models"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/response"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-user/dao/mall_sys_group"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-user/dao/mall_sys_group_permission_relation"
@@ -40,6 +41,9 @@ func GroupCreateSrv(groupInfo *http_dto.GroupDTO, user *http_dto.UserDTO, gtx *c
 	var permissionMap = make(map[uint]mall_sys_permission.MallSysPermission)
 	err = session.Transaction(func(tx *gorm.DB) error {
 		var group = mall_sys_group.MallSysGroup{
+			MallBase: cm.MallBase{
+				CreateUserId: user.ID,
+			},
 			UserId:    &user.ID,
 			ShopId:    &groupInfo.ShopId,
 			GroupName: groupInfo.GroupName,
@@ -67,6 +71,9 @@ func GroupCreateSrv(groupInfo *http_dto.GroupDTO, user *http_dto.UserDTO, gtx *c
 				continue
 			}
 			relationList = append(relationList, mall_sys_group_permission_relation.MallSysGroupPermissionRelation{
+				MallBase: cm.MallBase{
+					CreateUserId: user.ID,
+				},
 				GroupId:      &group.ID,
 				PermissionId: &permission.ID,
 			})

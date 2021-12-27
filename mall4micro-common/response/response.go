@@ -16,6 +16,7 @@ var (
 	SignTokenResponse         = &Response{Code: 4004, Message: "sign token error"}
 	ParseTokenResponse        = &Response{Code: 4005, Message: "parse token error"}
 	UserNotLoginResponse      = &Response{Code: 4006, Message: "user not login"}
+	ParamParseResponse        = &Response{Code: 4007, Message: "param parse error"}
 
 	RPCConnResponse = &Response{Code: 5000, Message: "rpc conn error"}
 	RPCExecResponse = &Response{Code: 5001, Message: "rpc exec error"}

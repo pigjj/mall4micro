@@ -28,7 +28,7 @@ func InitRouter() *gin.Engine {
 	{
 		url.GET("/ping", ctx.NewGinContext(commonHandlers.PingHandler, logger))
 
-		url.GET("/user_related_list", ctx.NewGinContext(handlers.ShopListHandler, logger))
+		url.GET("/user_related_shop_list", ctx.NewGinContext(handlers.ShopListHandler, logger))
 
 		url.POST("/create", ctx.NewGinContext(handlers.ShopCreateHandler, logger))
 	}

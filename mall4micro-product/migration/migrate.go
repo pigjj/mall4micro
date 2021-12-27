@@ -10,5 +10,5 @@ func init() {
 }
 
 func main() {
-	mall_category.MallShopCategory{}.Migrate()
+	mall_category.MallCategory{}.Migrate()
 }

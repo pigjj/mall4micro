@@ -2,12 +2,12 @@ package services
 
 import (
 	"errors"
-	authHttpDto "github.com/jianghaibo12138/mall4micro/mall4micro-auth/http_dto"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/conn"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/ctx"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/response"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-shop/dao/mall_shop"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-shop/http_dto"
+	userHttpDto "github.com/jianghaibo12138/mall4micro/mall4micro-user/http_dto"
 	"gorm.io/gorm"
 )
 
@@ -21,7 +21,7 @@ import (
 // @return *response.Response
 // @return error
 //
-func ShopList(user *authHttpDto.HttpAuthenticateDTO, gtx *ctx.GinContext) (mall_shop.MallShopList, *response.Response, error) {
+func ShopList(user *userHttpDto.UserDTO, gtx *ctx.GinContext) (mall_shop.MallShopList, *response.Response, error) {
 	if user == nil {
 		return nil, response.UserNotLoginResponse, errors.New(response.UserNotLoginResponse.Message)
 	}
@@ -54,7 +54,7 @@ func ShopList(user *authHttpDto.HttpAuthenticateDTO, gtx *ctx.GinContext) (mall_
 // @return *response.Response
 // @return error
 //
-func ShopCreate(shopDTO *http_dto.ShopDTO, user *authHttpDto.HttpAuthenticateDTO, gtx *ctx.GinContext) (*response.Response, error) {
+func ShopCreate(shopDTO *http_dto.ShopDTO, user *userHttpDto.UserDTO, gtx *ctx.GinContext) (*response.Response, error) {
 	if shopDTO == nil {
 		return response.PayloadParseResponse, errors.New(response.PayloadParseResponse.Message)
 	}

@@ -35,10 +35,10 @@ func InitRouter() *gin.Engine {
 
 		url.POST("/register", ctx.NewGinContext(http_handlers.RegisterHandler, logger))
 
-		url.GET("/group_list", ctx.NewGinContext(http_handlers.UserRelatedGroupHandler, logger))
+		url.GET("/user_related_group_list", ctx.NewGinContext(http_handlers.UserRelatedGroupHandler, logger))
 		url.POST("/group_create", ctx.NewGinContext(http_handlers.GroupCreateHandler, logger))
 
-		url.GET("/permission_list", ctx.NewGinContext(http_handlers.UserRelatedPermissionListHandler, logger))
+		url.GET("/user_related_permission_list", ctx.NewGinContext(http_handlers.UserRelatedPermissionListHandler, logger))
 		url.POST("/permission_create", ctx.NewGinContext(http_handlers.PermissionCreateHandler, logger))
 	}
 	return r

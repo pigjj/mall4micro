@@ -13,7 +13,7 @@ type MallSysGroup struct {
 	cm.MallBase
 	UserId    *uint  `gorm:"column:user_id;comment:用户ID;not null" json:"user_id"`
 	ShopId    *uint  `gorm:"column:shop_id;comment:商铺ID;not null" json:"shop_id"`
-	GroupName string `gorm:"column:group_name;size:50;comment:组名称;not null;unique" json:"group_name"`
+	GroupName string `gorm:"column:group_name;size:50;comment:组名称;not null" json:"group_name"`
 	GroupDesc string `gorm:"column:group_desc;size:100;comment:组描述;not null" json:"group_desc"`
 }
 

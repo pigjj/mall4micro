@@ -11,7 +11,7 @@ import (
 //
 type MallSysPermission struct {
 	cm.MallBase
-	PermissionName string `gorm:"column:permission_name;size:50;comment:权限名称;not null;unique" json:"permission_name"`
+	PermissionName string `gorm:"column:permission_name;size:50;comment:权限名称;not null;index:idx_permission_name,unique" json:"permission_name"`
 	PermissionDesc string `gorm:"column:permission_desc;size:100;comment:权限描述;not null" json:"permission_desc"`
 }
 
