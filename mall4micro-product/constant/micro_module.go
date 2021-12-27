@@ -1,3 +1,3 @@
 package constant
 
-const MicroServiceName = "mall4micro-auth"
+const MicroServiceName = "mall4micro-product"

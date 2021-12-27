@@ -7,6 +7,7 @@ import (
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/conf"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/log"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/services/discovery"
+	"github.com/jianghaibo12138/mall4micro/mall4micro-product/constant"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-product/routers"
 	"net/http"
 	"os"
@@ -16,12 +17,12 @@ import (
 )
 
 func main() {
-	conf.ReloadConf(routers.MicroServiceName)
+	conf.ReloadConf(constant.MicroServiceName)
 	if !conf.Settings.HttpServer.Debug {
 		gin.SetMode(gin.ReleaseMode)
 	}
 
-	logger := log.InitZapLogger(routers.MicroServiceName, conf.Settings.HttpServer.Debug)
+	logger := log.InitZapLogger(constant.MicroServiceName, conf.Settings.HttpServer.Debug)
 	r := routers.InitRouter()
 
 	serverUrl := fmt.Sprintf("%s:%d", conf.Settings.HttpServer.Host, conf.Settings.HttpServer.Port)

@@ -9,6 +9,7 @@ import (
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/middleware"
 	commonHandlers "github.com/jianghaibo12138/mall4micro/mall4micro-common/pkg/handlers"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-product/constant"
+	"github.com/jianghaibo12138/mall4micro/mall4micro-product/pkg/handlers"
 )
 
 var logger *log.ZapLogger
@@ -26,6 +27,8 @@ func InitRouter() *gin.Engine {
 	url := r.Group("/api/product")
 	{
 		url.GET("/ping", ctx.NewGinContext(commonHandlers.PingHandler, logger))
+
+		url.GET("/spec/list", ctx.NewGinContext(handlers.SpecListHandler, logger))
 	}
 	return r
 }

@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-auth/grpc_dto"
+	"github.com/jianghaibo12138/mall4micro/mall4micro-auth/http_dto"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/conf"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/log"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/response"
@@ -56,7 +57,12 @@ func AuthMiddleWare(logger *log.ZapLogger) gin.HandlerFunc {
 				c.Abort()
 				return
 			}
-			c.Set("user", userInfo)
+			c.Set("user", http_dto.HttpAuthenticateDTO{
+				Username: userInfo.Username,
+				Email:    userInfo.Email,
+				Mobile:   userInfo.Mobile,
+				Status:   int(userInfo.Status),
+			})
 			// 执行完对应的回调函数之后, 继续回到这个地方进行执行(但是响应还没有返回给客户端)
 			c.Next()
 		}

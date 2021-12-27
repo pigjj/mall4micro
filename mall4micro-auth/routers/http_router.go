@@ -34,6 +34,7 @@ func InitRouter() *gin.Engine {
 		url.GET("/ping", ctx.NewGinContext(commonHandlers.PingHandler, logger))
 
 		url.POST("/login", ctx.NewGinContext(http_handlers.LoginHandler, logger))
+
 		url.POST("/authenticate", ctx.NewGinContext(http_handlers.AuthenticateHandler, logger))
 
 	}
