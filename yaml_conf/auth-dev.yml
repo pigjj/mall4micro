@@ -64,6 +64,6 @@ mysql:
   port: 3306
   user: root
   password: root
-  database: mall4micro-user
+  database: mall4micro-auth
   max_idle_conn: 900
   max_conn: 1000

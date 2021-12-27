@@ -57,6 +57,7 @@ grpc_client:
 authorized:
   ignore_urls:
     - "/api/user/ping"
+    - "/api/user/register"
 
 mysql:
   host: 0.0.0.0
