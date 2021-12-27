@@ -3,7 +3,7 @@ package services
 import (
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/conf"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/response"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-user/dto"
+	"github.com/jianghaibo12138/mall4micro/mall4micro-user/http_dto"
 	"reflect"
 	"testing"
 )
@@ -14,10 +14,10 @@ func init() {
 
 func TestRegisterSrv(t *testing.T) {
 	type args struct {
-		r *dto.RegisterDTO
+		r *http_dto.RegisterDTO
 	}
 	c1 := args{
-		r: &dto.RegisterDTO{
+		r: &http_dto.RegisterDTO{
 			Username: "admin",
 			Password: "admin",
 			Platform: 0,

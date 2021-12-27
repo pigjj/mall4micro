@@ -40,6 +40,17 @@ grpc_server:
     passing: 10
     warning: 1
 
+grpc_client:
+  grpc_auth:
+    host: 0.0.0.0
+    port: 8090
+  grpc_product:
+    host: 0.0.0.0
+    port: 8091
+  grpc_user:
+    host: 0.0.0.0
+    port: 8092
+
 authorized:
   ignore_urls:
     - "/api/auth/login"

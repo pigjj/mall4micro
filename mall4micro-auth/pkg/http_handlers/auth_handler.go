@@ -14,7 +14,7 @@ func LoginHandler(gtx *ctx.GinContext) {
 		gtx.JsonWithData(response.PayloadParseResponse, err)
 		return
 	}
-	token, res, err := services.LoginService(&d)
+	token, res, err := services.LoginService(&d, gtx)
 	if err != nil {
 		gtx.JsonWithData(res, err)
 		return

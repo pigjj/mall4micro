@@ -5,7 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/gin-gonic/gin"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-auth/grpc_dto"
+	authGrpcDto "github.com/jianghaibo12138/mall4micro/mall4micro-auth/grpc_dto/mall4micro-auth/protos"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-auth/http_dto"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/conf"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/log"
@@ -20,14 +20,14 @@ var (
 	ErrAuthorizedFailed = errors.New("authorized failed")
 )
 
-func authorized(token string, logger *log.ZapLogger) (*grpc_dto.RpcAuthenticateReply, error) {
-	conn, err := grpc.Dial(fmt.Sprintf("%s:%d", conf.Settings.GrpcServer.Host, conf.Settings.GrpcServer.Port), grpc.WithInsecure())
+func authorized(token string, logger *log.ZapLogger) (*authGrpcDto.RpcAuthenticateReply, error) {
+	conn, err := grpc.Dial(fmt.Sprintf("%s:%d", conf.Settings.GrpcClient.GrpcAuth.Host, conf.Settings.GrpcClient.GrpcAuth.Port), grpc.WithInsecure())
 	if err != nil {
 		logger.Errorf("[authorized] connect gRpc server err: %s", err.Error())
 		return nil, err
 	}
-	client := grpc_dto.NewRpcAuthenticateSrvClient(conn)
-	request := grpc_dto.RpcAuthenticateRequest{
+	client := authGrpcDto.NewRpcAuthenticateSrvClient(conn)
+	request := authGrpcDto.RpcAuthenticateRequest{
 		Token: token,
 	}
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second*10)

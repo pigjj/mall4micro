@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option go_package = "github.com/jianghaibo12138/mall4micro/mall4micro-common/grpc_dto/mall4micro-common/protos";
+
+message RpcReply {
+  int64 code = 1;
+  string message = 2;
+  string data = 3;
+}

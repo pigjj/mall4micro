@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-option go_package = "github.com/jianghaibo12138/mall4micro/mall4micro-auth/grpc_dto";
+option go_package = "github.com/jianghaibo12138/mall4micro/mall4micro-auth/grpc_dto/mall4micro-auth/protos";
 
-import "reply.proto";
+import "mall4micro-common/protos/reply.proto";
 
 package dto;
 

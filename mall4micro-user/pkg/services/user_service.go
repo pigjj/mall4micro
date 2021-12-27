@@ -5,11 +5,11 @@ import (
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/response"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/utils"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-user/dao/mall_sys_user"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-user/dto"
+	"github.com/jianghaibo12138/mall4micro/mall4micro-user/http_dto"
 	"gorm.io/gorm"
 )
 
-func RegisterSrv(r *dto.RegisterDTO) (*response.Response, error) {
+func RegisterSrv(r *http_dto.RegisterDTO) (*response.Response, error) {
 	session, err := conn.Conn()
 	if err != nil {
 		return response.DBConnResponse, err

@@ -17,6 +17,9 @@ var (
 	ParseTokenResponse        = &Response{Code: 4005, Message: "parse token error"}
 	UserNotLoginResponse      = &Response{Code: 4006, Message: "user not login"}
 
+	RPCConnResponse = &Response{Code: 5000, Message: "rpc conn error"}
+	RPCExecResponse = &Response{Code: 5001, Message: "rpc exec error"}
+
 	DBConnResponse  = &Response{Code: 6000, Message: "connect database error"}
 	SQLExecResponse = &Response{Code: 6001, Message: "sql exec error"}
 )

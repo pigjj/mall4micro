@@ -2,14 +2,15 @@ package grpc_handlers
 
 import (
 	"context"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-auth/grpc_dto"
+	authGrpcDto "github.com/jianghaibo12138/mall4micro/mall4micro-auth/grpc_dto/mall4micro-auth/protos"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/ctx"
+	commonGrpcDto "github.com/jianghaibo12138/mall4micro/mall4micro-common/grpc_dto/mall4micro-common/protos"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/response"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/utils"
 )
 
 type RpcAuthenticateSrvServer struct {
-	grpc_dto.UnimplementedRpcAuthenticateSrvServer
+	authGrpcDto.UnimplementedRpcAuthenticateSrvServer
 }
 
 //
@@ -19,12 +20,12 @@ type RpcAuthenticateSrvServer struct {
 // @receiver s
 // @param c
 // @param in
-// @return *grpc_dto.RpcAuthenticateReply
+// @return *authGrpcDto.RpcAuthenticateReply
 // @return error
 //
-func (s RpcAuthenticateSrvServer) CallRpcAuthenticateSrv(c context.Context, in *grpc_dto.RpcAuthenticateRequest) (*grpc_dto.RpcAuthenticateReply, error) {
-	var out = &grpc_dto.RpcAuthenticateReply{
-		Reply: &grpc_dto.RpcReply{
+func (s RpcAuthenticateSrvServer) CallRpcAuthenticateSrv(c context.Context, in *authGrpcDto.RpcAuthenticateRequest) (*authGrpcDto.RpcAuthenticateReply, error) {
+	var out = &authGrpcDto.RpcAuthenticateReply{
+		Reply: &commonGrpcDto.RpcReply{
 			Code:    int64(response.SuccessResponse.Code),
 			Message: response.SuccessResponse.Message,
 		},

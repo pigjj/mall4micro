@@ -9,6 +9,8 @@ import (
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/services/discovery"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-user/constant"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-user/routers"
+	"google.golang.org/grpc/reflection"
+	"net"
 	"net/http"
 	"os"
 	"os/signal"
@@ -23,6 +25,23 @@ func main() {
 	}
 
 	logger := log.InitZapLogger(constant.MicroServiceName, conf.Settings.HttpServer.Debug)
+
+	lis, err := net.Listen("tcp", fmt.Sprintf("%s:%d", conf.Settings.GrpcServer.Host, conf.Settings.GrpcServer.Port))
+	if err != nil {
+		logger.Fatalf("[mall4micro-user] Failed to listen: %v", err)
+		return
+	}
+	go func() {
+		s := routers.InitGrpcRouter()
+		reflection.Register(s)
+		logger.Infof("[mall4micro-user] gRpcServer start on %s:%d", conf.Settings.GrpcServer.Host, conf.Settings.GrpcServer.Port)
+
+		err = s.Serve(lis)
+		if err != nil {
+			panic(err)
+		}
+	}()
+
 	r := routers.InitRouter()
 
 	serverUrl := fmt.Sprintf("%s:%d", conf.Settings.HttpServer.Host, conf.Settings.HttpServer.Port)
@@ -30,15 +49,15 @@ func main() {
 		Addr:    serverUrl,
 		Handler: r,
 	}
-	if conf.Settings.HttpServer.AutoRegister {
-		_, err := discovery.ServiceRegister()
-		if err != nil {
-			logger.Fatalf("[mall4micro-user] Service Discovery failed: %+v", err)
-			return
-		}
-	}
-	logger.Infof("[mall4micro-user] HttpServer start on: %s", serverUrl)
 	go func() {
+		if conf.Settings.HttpServer.AutoRegister {
+			_, err := discovery.ServiceRegister()
+			if err != nil {
+				logger.Fatalf("[mall4micro-user] Service Discovery failed: %+v", err)
+				return
+			}
+		}
+		logger.Infof("[mall4micro-user] HttpServer start on: %s", serverUrl)
 		if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 			logger.Fatalf("[mall4micro-user] HttpServer listen: %s", err)
 		}

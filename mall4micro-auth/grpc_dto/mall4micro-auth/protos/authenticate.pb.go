@@ -2,11 +2,12 @@
 // versions:
 // 	protoc-gen-go v1.26.0
 // 	protoc        v3.17.3
-// source: authenticate.proto
+// source: mall4micro-auth/protos/authenticate.proto
 
-package grpc_dto
+package protos
 
 import (
+	protos "github.com/jianghaibo12138/mall4micro/mall4micro-common/grpc_dto/mall4micro-common/protos"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -31,7 +32,7 @@ type RpcAuthenticateRequest struct {
 func (x *RpcAuthenticateRequest) Reset() {
 	*x = RpcAuthenticateRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_authenticate_proto_msgTypes[0]
+		mi := &file_mall4micro_auth_protos_authenticate_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -44,7 +45,7 @@ func (x *RpcAuthenticateRequest) String() string {
 func (*RpcAuthenticateRequest) ProtoMessage() {}
 
 func (x *RpcAuthenticateRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_authenticate_proto_msgTypes[0]
+	mi := &file_mall4micro_auth_protos_authenticate_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -57,7 +58,7 @@ func (x *RpcAuthenticateRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RpcAuthenticateRequest.ProtoReflect.Descriptor instead.
 func (*RpcAuthenticateRequest) Descriptor() ([]byte, []int) {
-	return file_authenticate_proto_rawDescGZIP(), []int{0}
+	return file_mall4micro_auth_protos_authenticate_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *RpcAuthenticateRequest) GetToken() string {
@@ -72,17 +73,17 @@ type RpcAuthenticateReply struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Reply    *RpcReply `protobuf:"bytes,1,opt,name=reply,proto3" json:"reply,omitempty"`
-	Username string    `protobuf:"bytes,2,opt,name=username,proto3" json:"username,omitempty"`
-	Email    string    `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
-	Mobile   string    `protobuf:"bytes,4,opt,name=mobile,proto3" json:"mobile,omitempty"`
-	Status   int64     `protobuf:"varint,5,opt,name=status,proto3" json:"status,omitempty"`
+	Reply    *protos.RpcReply `protobuf:"bytes,1,opt,name=reply,proto3" json:"reply,omitempty"`
+	Username string           `protobuf:"bytes,2,opt,name=username,proto3" json:"username,omitempty"`
+	Email    string           `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
+	Mobile   string           `protobuf:"bytes,4,opt,name=mobile,proto3" json:"mobile,omitempty"`
+	Status   int64            `protobuf:"varint,5,opt,name=status,proto3" json:"status,omitempty"`
 }
 
 func (x *RpcAuthenticateReply) Reset() {
 	*x = RpcAuthenticateReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_authenticate_proto_msgTypes[1]
+		mi := &file_mall4micro_auth_protos_authenticate_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -95,7 +96,7 @@ func (x *RpcAuthenticateReply) String() string {
 func (*RpcAuthenticateReply) ProtoMessage() {}
 
 func (x *RpcAuthenticateReply) ProtoReflect() protoreflect.Message {
-	mi := &file_authenticate_proto_msgTypes[1]
+	mi := &file_mall4micro_auth_protos_authenticate_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -108,10 +109,10 @@ func (x *RpcAuthenticateReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RpcAuthenticateReply.ProtoReflect.Descriptor instead.
 func (*RpcAuthenticateReply) Descriptor() ([]byte, []int) {
-	return file_authenticate_proto_rawDescGZIP(), []int{1}
+	return file_mall4micro_auth_protos_authenticate_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *RpcAuthenticateReply) GetReply() *RpcReply {
+func (x *RpcAuthenticateReply) GetReply() *protos.RpcReply {
 	if x != nil {
 		return x.Reply
 	}
@@ -146,11 +147,14 @@ func (x *RpcAuthenticateReply) GetStatus() int64 {
 	return 0
 }
 
-var File_authenticate_proto protoreflect.FileDescriptor
+var File_mall4micro_auth_protos_authenticate_proto protoreflect.FileDescriptor
 
-var file_authenticate_proto_rawDesc = []byte{
-	0x0a, 0x12, 0x61, 0x75, 0x74, 0x68, 0x65, 0x6e, 0x74, 0x69, 0x63, 0x61, 0x74, 0x65, 0x2e, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x12, 0x03, 0x64, 0x74, 0x6f, 0x1a, 0x0b, 0x72, 0x65, 0x70, 0x6c, 0x79,
+var file_mall4micro_auth_protos_authenticate_proto_rawDesc = []byte{
+	0x0a, 0x29, 0x6d, 0x61, 0x6c, 0x6c, 0x34, 0x6d, 0x69, 0x63, 0x72, 0x6f, 0x2d, 0x61, 0x75, 0x74,
+	0x68, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x73, 0x2f, 0x61, 0x75, 0x74, 0x68, 0x65, 0x6e, 0x74,
+	0x69, 0x63, 0x61, 0x74, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x03, 0x64, 0x74, 0x6f,
+	0x1a, 0x24, 0x6d, 0x61, 0x6c, 0x6c, 0x34, 0x6d, 0x69, 0x63, 0x72, 0x6f, 0x2d, 0x63, 0x6f, 0x6d,
+	0x6d, 0x6f, 0x6e, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x73, 0x2f, 0x72, 0x65, 0x70, 0x6c, 0x79,
 	0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x2e, 0x0a, 0x16, 0x52, 0x70, 0x63, 0x41, 0x75, 0x74,
 	0x68, 0x65, 0x6e, 0x74, 0x69, 0x63, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
 	0x12, 0x14, 0x0a, 0x05, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
@@ -170,33 +174,34 @@ var file_authenticate_proto_rawDesc = []byte{
 	0x72, 0x76, 0x12, 0x1b, 0x2e, 0x64, 0x74, 0x6f, 0x2e, 0x52, 0x70, 0x63, 0x41, 0x75, 0x74, 0x68,
 	0x65, 0x6e, 0x74, 0x69, 0x63, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
 	0x19, 0x2e, 0x64, 0x74, 0x6f, 0x2e, 0x52, 0x70, 0x63, 0x41, 0x75, 0x74, 0x68, 0x65, 0x6e, 0x74,
-	0x69, 0x63, 0x61, 0x74, 0x65, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x00, 0x42, 0x40, 0x5a, 0x3e,
+	0x69, 0x63, 0x61, 0x74, 0x65, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x00, 0x42, 0x57, 0x5a, 0x55,
 	0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x6a, 0x69, 0x61, 0x6e, 0x67,
 	0x68, 0x61, 0x69, 0x62, 0x6f, 0x31, 0x32, 0x31, 0x33, 0x38, 0x2f, 0x6d, 0x61, 0x6c, 0x6c, 0x34,
 	0x6d, 0x69, 0x63, 0x72, 0x6f, 0x2f, 0x6d, 0x61, 0x6c, 0x6c, 0x34, 0x6d, 0x69, 0x63, 0x72, 0x6f,
-	0x2d, 0x61, 0x75, 0x74, 0x68, 0x2f, 0x67, 0x72, 0x70, 0x63, 0x5f, 0x64, 0x74, 0x6f, 0x62, 0x06,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x2d, 0x61, 0x75, 0x74, 0x68, 0x2f, 0x67, 0x72, 0x70, 0x63, 0x5f, 0x64, 0x74, 0x6f, 0x2f, 0x6d,
+	0x61, 0x6c, 0x6c, 0x34, 0x6d, 0x69, 0x63, 0x72, 0x6f, 0x2d, 0x61, 0x75, 0x74, 0x68, 0x2f, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x73, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
-	file_authenticate_proto_rawDescOnce sync.Once
-	file_authenticate_proto_rawDescData = file_authenticate_proto_rawDesc
+	file_mall4micro_auth_protos_authenticate_proto_rawDescOnce sync.Once
+	file_mall4micro_auth_protos_authenticate_proto_rawDescData = file_mall4micro_auth_protos_authenticate_proto_rawDesc
 )
 
-func file_authenticate_proto_rawDescGZIP() []byte {
-	file_authenticate_proto_rawDescOnce.Do(func() {
-		file_authenticate_proto_rawDescData = protoimpl.X.CompressGZIP(file_authenticate_proto_rawDescData)
+func file_mall4micro_auth_protos_authenticate_proto_rawDescGZIP() []byte {
+	file_mall4micro_auth_protos_authenticate_proto_rawDescOnce.Do(func() {
+		file_mall4micro_auth_protos_authenticate_proto_rawDescData = protoimpl.X.CompressGZIP(file_mall4micro_auth_protos_authenticate_proto_rawDescData)
 	})
-	return file_authenticate_proto_rawDescData
+	return file_mall4micro_auth_protos_authenticate_proto_rawDescData
 }
 
-var file_authenticate_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
-var file_authenticate_proto_goTypes = []interface{}{
+var file_mall4micro_auth_protos_authenticate_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_mall4micro_auth_protos_authenticate_proto_goTypes = []interface{}{
 	(*RpcAuthenticateRequest)(nil), // 0: dto.RpcAuthenticateRequest
 	(*RpcAuthenticateReply)(nil),   // 1: dto.RpcAuthenticateReply
-	(*RpcReply)(nil),               // 2: RpcReply
+	(*protos.RpcReply)(nil),        // 2: RpcReply
 }
-var file_authenticate_proto_depIdxs = []int32{
+var file_mall4micro_auth_protos_authenticate_proto_depIdxs = []int32{
 	2, // 0: dto.RpcAuthenticateReply.reply:type_name -> RpcReply
 	0, // 1: dto.RpcAuthenticateSrv.CallRpcAuthenticateSrv:input_type -> dto.RpcAuthenticateRequest
 	1, // 2: dto.RpcAuthenticateSrv.CallRpcAuthenticateSrv:output_type -> dto.RpcAuthenticateReply
@@ -207,14 +212,13 @@ var file_authenticate_proto_depIdxs = []int32{
 	0, // [0:1] is the sub-list for field type_name
 }
 
-func init() { file_authenticate_proto_init() }
-func file_authenticate_proto_init() {
-	if File_authenticate_proto != nil {
+func init() { file_mall4micro_auth_protos_authenticate_proto_init() }
+func file_mall4micro_auth_protos_authenticate_proto_init() {
+	if File_mall4micro_auth_protos_authenticate_proto != nil {
 		return
 	}
-	file_reply_proto_init()
 	if !protoimpl.UnsafeEnabled {
-		file_authenticate_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
+		file_mall4micro_auth_protos_authenticate_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RpcAuthenticateRequest); i {
 			case 0:
 				return &v.state
@@ -226,7 +230,7 @@ func file_authenticate_proto_init() {
 				return nil
 			}
 		}
-		file_authenticate_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+		file_mall4micro_auth_protos_authenticate_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RpcAuthenticateReply); i {
 			case 0:
 				return &v.state
@@ -243,18 +247,18 @@ func file_authenticate_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_authenticate_proto_rawDesc,
+			RawDescriptor: file_mall4micro_auth_protos_authenticate_proto_rawDesc,
 			NumEnums:      0,
 			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_authenticate_proto_goTypes,
-		DependencyIndexes: file_authenticate_proto_depIdxs,
-		MessageInfos:      file_authenticate_proto_msgTypes,
+		GoTypes:           file_mall4micro_auth_protos_authenticate_proto_goTypes,
+		DependencyIndexes: file_mall4micro_auth_protos_authenticate_proto_depIdxs,
+		MessageInfos:      file_mall4micro_auth_protos_authenticate_proto_msgTypes,
 	}.Build()
-	File_authenticate_proto = out.File
-	file_authenticate_proto_rawDesc = nil
-	file_authenticate_proto_goTypes = nil
-	file_authenticate_proto_depIdxs = nil
+	File_mall4micro_auth_protos_authenticate_proto = out.File
+	file_mall4micro_auth_protos_authenticate_proto_rawDesc = nil
+	file_mall4micro_auth_protos_authenticate_proto_goTypes = nil
+	file_mall4micro_auth_protos_authenticate_proto_depIdxs = nil
 }

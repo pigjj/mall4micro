@@ -9,7 +9,7 @@ import (
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/middleware"
 	commonHandlers "github.com/jianghaibo12138/mall4micro/mall4micro-common/pkg/handlers"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-user/constant"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-user/pkg/handlers"
+	"github.com/jianghaibo12138/mall4micro/mall4micro-user/pkg/http_handlers"
 )
 
 var logger *log.ZapLogger
@@ -28,12 +28,12 @@ func InitRouter() *gin.Engine {
 	r.Use(gzip.Gzip(gzip.DefaultCompression))
 
 	r.Use(middleware.AuthMiddleWare(logger))
-	
+
 	url := r.Group("/api/user")
 	{
 		url.GET("/ping", ctx.NewGinContext(commonHandlers.PingHandler, logger))
 
-		url.POST("/register", ctx.NewGinContext(handlers.RegisterHandler, logger))
+		url.POST("/register", ctx.NewGinContext(http_handlers.RegisterHandler, logger))
 	}
 	return r
 }

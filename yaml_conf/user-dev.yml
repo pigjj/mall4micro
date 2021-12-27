@@ -25,7 +25,7 @@ grpc_server:
   port: 8092
   debug: true
   server_id: 614c21d4-c56e-4c54-9e5b-3f53deb73aca
-  server_name: mall4micro-auth
+  server_name: mall4micro-user
   server_tags:
     - auth
   address: 192.168.0.115
@@ -39,6 +39,17 @@ grpc_server:
   service_weights:
     passing: 10
     warning: 1
+
+grpc_client:
+  grpc_auth:
+    host: 0.0.0.0
+    port: 8090
+  grpc_product:
+    host: 0.0.0.0
+    port: 8091
+  grpc_user:
+    host: 0.0.0.0
+    port: 8092
 
 authorized:
   ignore_urls:

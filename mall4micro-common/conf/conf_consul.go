@@ -32,7 +32,12 @@ type server struct {
 type MicroConf struct {
 	HttpServer server `yaml:"http_server"`
 	GrpcServer server `yaml:"grpc_server"`
-	Mysql      struct {
+	GrpcClient struct {
+		GrpcAuth    server `yaml:"grpc_auth"`
+		GrpcUser    server `yaml:"grpc_user"`
+		GrpcProduct server `yaml:"grpc_product"`
+	} `yaml:"grpc_client"`
+	Mysql struct {
 		Host        string `yaml:"host"`
 		Port        int    `yaml:"port"`
 		User        string `yaml:"user"`

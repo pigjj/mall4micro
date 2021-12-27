@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option go_package = "github.com/jianghaibo12138/mall4micro/mall4micro-user/grpc_dto/mall4micro-user/protos";
+
+import "mall4micro-common/protos/reply.proto";
+
+package dto;
+
+service RpcUserInfoByUsernameSrv {
+  rpc CallRpcUserInfoByUsernameSrv (RpcUserInfoByUsernameRequest) returns (RpcUserInfoReply) {}
+}
+
+message RpcUserInfoByUsernameRequest {
+  string username = 1;
+}
+
+message RpcUserInfoReply {
+  RpcReply reply = 1;
+  string username = 2;
+  string password = 3;
+  string email = 4;
+  string mobile = 5;
+  int64 status = 6;
+  string salt_str = 7;
+}

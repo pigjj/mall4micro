@@ -5,4 +5,5 @@ type HttpAuthenticateDTO struct {
 	Email    string `json:"email"`
 	Mobile   string `json:"mobile"`
 	Status   int    `json:"status"`
+	SaltStr  string `json:"salt_str"`
 }

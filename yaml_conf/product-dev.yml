@@ -22,7 +22,7 @@ http_server:
 grpc_server:
   auto_register: false
   host: 0.0.0.0
-  port: 8090
+  port: 8091
   debug: true
   server_id: 614c21d4-c56e-4c54-9e5b-3f53deb73aca
   server_name: mall4micro-product
@@ -39,6 +39,17 @@ grpc_server:
   service_weights:
     passing: 10
     warning: 1
+
+grpc_client:
+  grpc_auth:
+    host: 0.0.0.0
+    port: 8090
+  grpc_product:
+    host: 0.0.0.0
+    port: 8091
+  grpc_user:
+    host: 0.0.0.0
+    port: 8092
 
 authorized:
   ignore_urls:
