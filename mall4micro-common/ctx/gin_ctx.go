@@ -2,6 +2,7 @@ package ctx
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/jianghaibo12138/mall4micro/mall4micro-auth/http_dto"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/log"
 	"github.com/jianghaibo12138/mall4micro/mall4micro-common/response"
 	"net/http"
@@ -10,6 +11,7 @@ import (
 type GinContext struct {
 	*gin.Context
 	Logger *log.ZapLogger
+	User   *http_dto.HttpAuthenticateDTO
 }
 
 //
@@ -21,7 +23,7 @@ type GinContext struct {
 //
 func NewGinContext(fn func(gtx *GinContext), logger *log.ZapLogger) gin.HandlerFunc {
 	return func(ctx *gin.Context) {
-		fn(&GinContext{ctx, logger})
+		fn(&GinContext{ctx, logger, nil})
 	}
 }
 
@@ -30,7 +32,7 @@ func NewGinContext(fn func(gtx *GinContext), logger *log.ZapLogger) gin.HandlerF
 // @Description: 返回json数据，不携带额外数据
 // @receiver gtx
 // @param res
-//s
+// s
 func (gtx *GinContext) Json(res *response.Response) {
 	gtx.Context.JSON(http.StatusOK, gin.H{"code": res.Code, "message": res.Message})
 }

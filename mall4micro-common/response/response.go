@@ -15,6 +15,7 @@ var (
 	UserPasswordResponse      = &Response{Code: 4003, Message: "user password incorrect"}
 	SignTokenResponse         = &Response{Code: 4004, Message: "sign token error"}
 	ParseTokenResponse        = &Response{Code: 4005, Message: "parse token error"}
+	UserNotLoginResponse      = &Response{Code: 4006, Message: "user not login"}
 
 	DBConnResponse  = &Response{Code: 6000, Message: "connect database error"}
 	SQLExecResponse = &Response{Code: 6001, Message: "sql exec error"}

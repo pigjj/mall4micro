@@ -27,7 +27,7 @@ func InitRouter() *gin.Engine {
 	r := gin.Default()
 	r.Use(gzip.Gzip(gzip.DefaultCompression))
 
-	r.Use(middleware.AuthMiddleWare())
+	r.Use(middleware.AuthMiddleWare(logger))
 
 	url := r.Group("/api/auth")
 	{

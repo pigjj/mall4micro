@@ -12,6 +12,16 @@ type RpcAuthenticateSrvServer struct {
 	grpc_dto.UnimplementedRpcAuthenticateSrvServer
 }
 
+//
+// CallRpcAuthenticateSrv
+// @Description: Token认证gRpc接口
+// @Document:
+// @receiver s
+// @param c
+// @param in
+// @return *grpc_dto.RpcAuthenticateReply
+// @return error
+//
 func (s RpcAuthenticateSrvServer) CallRpcAuthenticateSrv(c context.Context, in *grpc_dto.RpcAuthenticateRequest) (*grpc_dto.RpcAuthenticateReply, error) {
 	var out = &grpc_dto.RpcAuthenticateReply{
 		Reply: &grpc_dto.RpcReply{
@@ -26,6 +36,12 @@ func (s RpcAuthenticateSrvServer) CallRpcAuthenticateSrv(c context.Context, in *
 	if err != nil {
 		out.Reply.Code = int64(response.ParseTokenResponse.Code)
 		out.Reply.Message = response.ParseTokenResponse.Message
+		out.Reply.Data = err.Error()
+		return out, nil
 	}
+	out.Username = t.Username
+	out.Email = t.Email
+	out.Mobile = t.Mobile
+	out.Status = int64(t.Status)
 	return out, nil
 }
