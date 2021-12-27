@@ -30,6 +30,9 @@ func InitRouter() *gin.Engine {
 
 		url.GET("/category/list/:shop_id", ctx.NewGinContext(handlers.CategoryListHandler, logger))
 		url.POST("/category/create", ctx.NewGinContext(handlers.CategoryCreateHandler, logger))
+
+		url.GET("/product/list/:shop_id", ctx.NewGinContext(handlers.ProductListHandler, logger))
+		url.POST("/product/create", ctx.NewGinContext(handlers.ProductCreateHandler, logger))
 	}
 	return r
 }
