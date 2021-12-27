@@ -60,16 +60,13 @@ func TestTokenUtil_Parse(t1 *testing.T) {
 		name   string
 		fields fields
 		args   args
-		want   bool
 	}{
-		{name: "c1", fields: f, args: c1, want: true},
+		{name: "c1", fields: f, args: c1},
 	}
 	for _, tt := range tests {
 		t1.Run(tt.name, func(t1 *testing.T) {
 			t := &TokenUtil{}
-			if got := t.Parse(tt.args.tokenStr); got != tt.want {
-				t1.Errorf("Parse() = %v, want %v", got, tt.want)
-			}
+			t.Parse(tt.args.tokenStr)
 			t1.Logf("%+v", t)
 		})
 	}

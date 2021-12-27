@@ -40,6 +40,7 @@ func (s RpcAuthenticateSrvServer) CallRpcAuthenticateSrv(c context.Context, in *
 		out.Reply.Data = err.Error()
 		return out, nil
 	}
+	out.Id = uint32(t.ID)
 	out.Username = t.Username
 	out.Email = t.Email
 	out.Mobile = t.Mobile

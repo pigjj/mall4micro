@@ -20,6 +20,9 @@ var (
 	RPCConnResponse = &Response{Code: 5000, Message: "rpc conn error"}
 	RPCExecResponse = &Response{Code: 5001, Message: "rpc exec error"}
 
-	DBConnResponse  = &Response{Code: 6000, Message: "connect database error"}
-	SQLExecResponse = &Response{Code: 6001, Message: "sql exec error"}
+	DBConnResponse    = &Response{Code: 6000, Message: "connect database error"}
+	SQLExecResponse   = &Response{Code: 6001, Message: "sql exec error"}
+	SQLCreateResponse = &Response{Code: 6002, Message: "sql create error"}
+	SQLUpdateResponse = &Response{Code: 6003, Message: "sql update error"}
+	SQLDeleteResponse = &Response{Code: 6004, Message: "sql delete error"}
 )

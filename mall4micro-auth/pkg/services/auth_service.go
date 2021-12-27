@@ -21,6 +21,7 @@ func LoginService(d *http_dto.HttpLoginDTO, gtx *ctx.GinContext) (string, *respo
 		return "", response.UserPasswordResponse, err
 	}
 	var tu = utils.TokenUtil{
+		ID:       uint(user.Id),
 		Username: user.Username,
 		Email:    user.Email,
 		Mobile:   user.Mobile,

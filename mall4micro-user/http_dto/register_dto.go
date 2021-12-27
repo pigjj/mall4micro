@@ -2,6 +2,10 @@ package http_dto
 
 import "errors"
 
+//
+// RegisterDTO
+// @Description: 用户注册DTO
+//
 type RegisterDTO struct {
 	Username string `json:"username"`
 	Password string `json:"password"`

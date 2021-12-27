@@ -9,6 +9,14 @@ import (
 	"gorm.io/gorm"
 )
 
+//
+// RegisterSrv
+// @Description: 用户注册服务
+// @Document:
+// @param r
+// @return *response.Response
+// @return error
+//
 func RegisterSrv(r *http_dto.RegisterDTO) (*response.Response, error) {
 	session, err := conn.Conn()
 	if err != nil {

@@ -16,10 +16,11 @@ message RpcUserInfoByUsernameRequest {
 
 message RpcUserInfoReply {
   RpcReply reply = 1;
-  string username = 2;
-  string password = 3;
-  string email = 4;
-  string mobile = 5;
-  int64 status = 6;
-  string salt_str = 7;
+  uint32 id = 2;
+  string username = 3;
+  string password = 4;
+  string email = 5;
+  string mobile = 6;
+  int64 status = 7;
+  string salt_str = 8;
 }

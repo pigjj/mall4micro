@@ -56,6 +56,7 @@ func (s RpcUserInfoByUsernameSrvServer) CallRpcUserInfoByUsernameSrv(c context.C
 		out.Reply.Data = err.Error()
 		return out, nil
 	}
+	out.Id = uint32(user.ID)
 	out.Username = user.Username
 	out.Password = user.Password
 	out.Email = user.Email

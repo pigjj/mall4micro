@@ -7,6 +7,7 @@ import (
 )
 
 type TokenUtil struct {
+	ID       uint
 	Username string
 	Email    string
 	Mobile   string
@@ -23,6 +24,7 @@ var hmacSampleSecret = []byte("346b281f-9282-49fe-9970-b18f9fdac659")
 
 func (t *TokenUtil) Generate() (string, error) {
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
+		"id":       t.ID,
 		"username": t.Username,
 		"email":    t.Email,
 		"mobile":   t.Mobile,
@@ -53,6 +55,7 @@ func (t *TokenUtil) Parse(tokenStr string) error {
 	if !ok {
 		return ErrParseToken
 	}
+	t.ID = uint(claims["id"].(float64))
 	t.Username = claims["username"].(string)
 	t.Email = claims["email"].(string)
 	t.Mobile = claims["mobile"].(string)

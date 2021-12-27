@@ -1,0 +1,68 @@
+http_server:
+  auto_register: false
+  host: 0.0.0.0
+  port: 8083
+  debug: true
+  server_id: 524aa2f0-72e8-42bb-acb2-42b025942727
+  server_name: mall4micro-shop
+  server_tags:
+    - shop
+  address: 192.168.0.115
+  service_check:
+    deregister_critical_service_after: 90s
+    args:
+      - curl
+      - http://192.168.0.115:8081/api/shop/ping
+    interval: 10s
+    timeout: 2s
+  service_weights:
+    passing: 10
+    warning: 1
+
+grpc_server:
+  auto_register: false
+  host: 0.0.0.0
+  port: 8091
+  debug: true
+  server_id: 614c21d4-c56e-4c54-9e5b-3f53deb73aca
+  server_name: mall4micro-shop
+  server_tags:
+    - auth
+  address: 192.168.0.115
+  service_check:
+    deregister_critical_service_after: 90s
+    args:
+      - curl
+      - http://192.168.0.115:8080/api/auth/ping
+    interval: 10s
+    timeout: 2s
+  service_weights:
+    passing: 10
+    warning: 1
+
+grpc_client:
+  grpc_auth:
+    host: 0.0.0.0
+    port: 8090
+  grpc_product:
+    host: 0.0.0.0
+    port: 8091
+  grpc_user:
+    host: 0.0.0.0
+    port: 8092
+  grpc_shop:
+    host: 0.0.0.0
+    port: 8093
+
+authorized:
+  ignore_urls:
+    - "/api/shop/ping"
+
+mysql:
+  host: 0.0.0.0
+  port: 3306
+  user: root
+  password: root
+  database: mall4micro-shop
+  max_idle_conn: 900
+  max_conn: 1000
