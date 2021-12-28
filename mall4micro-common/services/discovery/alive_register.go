@@ -40,6 +40,9 @@ func (ar *AliveRegister) uploadService(client *http_client.Client) error {
 		return err
 	}
 	response, err := client.Request(buf)
+	if err != nil {
+		return err
+	}
 	bytes, err := ioutil.ReadAll(response.Body)
 	if err != nil {
 		return err
