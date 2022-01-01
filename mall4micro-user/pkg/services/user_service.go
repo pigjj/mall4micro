@@ -1,11 +1,11 @@
 package services
 
 import (
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/conn"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/response"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/utils"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-user/dao/mall_sys_user"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-user/http_dto"
+	"github.com/pigjj/mall4micro/mall4micro-common/conn"
+	"github.com/pigjj/mall4micro/mall4micro-common/response"
+	"github.com/pigjj/mall4micro/mall4micro-common/utils"
+	"github.com/pigjj/mall4micro/mall4micro-user/dao/mall_sys_user"
+	"github.com/pigjj/mall4micro/mall4micro-user/http_dto"
 	"gorm.io/gorm"
 )
 

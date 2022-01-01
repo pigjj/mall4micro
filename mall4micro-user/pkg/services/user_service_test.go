@@ -1,9 +1,9 @@
 package services
 
 import (
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/conf"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/response"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-user/http_dto"
+	"github.com/pigjj/mall4micro/mall4micro-common/conf"
+	"github.com/pigjj/mall4micro/mall4micro-common/response"
+	"github.com/pigjj/mall4micro/mall4micro-user/http_dto"
 	"reflect"
 	"testing"
 )

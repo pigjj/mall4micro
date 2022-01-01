@@ -2,11 +2,11 @@ package grpc_handlers
 
 import (
 	"context"
-	authGrpcDto "github.com/jianghaibo12138/mall4micro/mall4micro-auth/grpc_dto/mall4micro-auth/protos"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/ctx"
-	commonGrpcDto "github.com/jianghaibo12138/mall4micro/mall4micro-common/grpc_dto/mall4micro-common/protos"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/response"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/utils"
+	authGrpcDto "github.com/pigjj/mall4micro/mall4micro-auth/grpc_dto/mall4micro-auth/protos"
+	"github.com/pigjj/mall4micro/mall4micro-common/ctx"
+	commonGrpcDto "github.com/pigjj/mall4micro/mall4micro-common/grpc_dto/mall4micro-common/protos"
+	"github.com/pigjj/mall4micro/mall4micro-common/response"
+	"github.com/pigjj/mall4micro/mall4micro-common/utils"
 )
 
 type RpcAuthenticateSrvServer struct {

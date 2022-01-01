@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-auth/grpc_dto"
+	"github.com/pigjj/mall4micro/mall4micro-auth/grpc_dto"
 	"google.golang.org/grpc"
 	"time"
 )

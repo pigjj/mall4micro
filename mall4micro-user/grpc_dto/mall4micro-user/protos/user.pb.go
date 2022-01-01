@@ -7,7 +7,7 @@
 package protos
 
 import (
-	protos "github.com/jianghaibo12138/mall4micro/mall4micro-common/grpc_dto/mall4micro-common/protos"
+	protos "github.com/pigjj/mall4micro/mall4micro-common/grpc_dto/mall4micro-common/protos"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"

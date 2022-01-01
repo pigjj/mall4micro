@@ -1,4 +1,4 @@
-module github.com/jianghaibo12138/mall4micro
+module github.com/pigjj/mall4micro
 
 go 1.17
 

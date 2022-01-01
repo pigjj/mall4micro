@@ -1,7 +1,7 @@
 package conn
 
 import (
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/conf"
+	"github.com/pigjj/mall4micro/mall4micro-common/conf"
 	"testing"
 )
 

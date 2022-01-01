@@ -2,9 +2,9 @@ package routers
 
 import (
 	"github.com/grpc-ecosystem/go-grpc-middleware"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/ctx"
-	userGrpcDto "github.com/jianghaibo12138/mall4micro/mall4micro-user/grpc_dto/mall4micro-user/protos"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-user/pkg/grpc_handlers"
+	"github.com/pigjj/mall4micro/mall4micro-common/ctx"
+	userGrpcDto "github.com/pigjj/mall4micro/mall4micro-user/grpc_dto/mall4micro-user/protos"
+	"github.com/pigjj/mall4micro/mall4micro-user/pkg/grpc_handlers"
 	"google.golang.org/grpc"
 )
 

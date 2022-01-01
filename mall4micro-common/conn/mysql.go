@@ -2,7 +2,7 @@ package conn
 
 import (
 	"fmt"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/conf"
+	"github.com/pigjj/mall4micro/mall4micro-common/conf"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"time"

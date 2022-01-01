@@ -2,12 +2,12 @@ package grpc_handlers
 
 import (
 	"context"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/conn"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/ctx"
-	commonGrpcDto "github.com/jianghaibo12138/mall4micro/mall4micro-common/grpc_dto/mall4micro-common/protos"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/response"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-user/dao/mall_sys_user"
-	userGrpcDto "github.com/jianghaibo12138/mall4micro/mall4micro-user/grpc_dto/mall4micro-user/protos"
+	"github.com/pigjj/mall4micro/mall4micro-common/conn"
+	"github.com/pigjj/mall4micro/mall4micro-common/ctx"
+	commonGrpcDto "github.com/pigjj/mall4micro/mall4micro-common/grpc_dto/mall4micro-common/protos"
+	"github.com/pigjj/mall4micro/mall4micro-common/response"
+	"github.com/pigjj/mall4micro/mall4micro-user/dao/mall_sys_user"
+	userGrpcDto "github.com/pigjj/mall4micro/mall4micro-user/grpc_dto/mall4micro-user/protos"
 	"gorm.io/gorm"
 )
 

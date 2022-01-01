@@ -2,14 +2,14 @@ package services
 
 import (
 	"errors"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/conn"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/ctx"
-	cm "github.com/jianghaibo12138/mall4micro/mall4micro-common/models"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/response"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-user/dao/mall_sys_group"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-user/dao/mall_sys_group_permission_relation"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-user/dao/mall_sys_permission"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-user/http_dto"
+	"github.com/pigjj/mall4micro/mall4micro-common/conn"
+	"github.com/pigjj/mall4micro/mall4micro-common/ctx"
+	cm "github.com/pigjj/mall4micro/mall4micro-common/models"
+	"github.com/pigjj/mall4micro/mall4micro-common/response"
+	"github.com/pigjj/mall4micro/mall4micro-user/dao/mall_sys_group"
+	"github.com/pigjj/mall4micro/mall4micro-user/dao/mall_sys_group_permission_relation"
+	"github.com/pigjj/mall4micro/mall4micro-user/dao/mall_sys_permission"
+	"github.com/pigjj/mall4micro/mall4micro-user/http_dto"
 	"gorm.io/gorm"
 )
 

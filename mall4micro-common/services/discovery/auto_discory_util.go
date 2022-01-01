@@ -1,8 +1,8 @@
 package discovery
 
 import (
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/conf"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/dto"
+	"github.com/pigjj/mall4micro/mall4micro-common/conf"
+	"github.com/pigjj/mall4micro/mall4micro-common/dto"
 )
 
 //

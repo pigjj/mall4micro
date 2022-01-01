@@ -2,7 +2,7 @@ package conf
 
 import (
 	"fmt"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/utils"
+	"github.com/pigjj/mall4micro/mall4micro-common/utils"
 	"gopkg.in/yaml.v3"
 	"io/ioutil"
 	"os"

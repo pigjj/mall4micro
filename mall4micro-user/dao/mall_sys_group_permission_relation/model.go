@@ -1,8 +1,8 @@
 package mall_sys_group_permission_relation
 
 import (
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/conn"
-	cm "github.com/jianghaibo12138/mall4micro/mall4micro-common/models"
+	"github.com/pigjj/mall4micro/mall4micro-common/conn"
+	cm "github.com/pigjj/mall4micro/mall4micro-common/models"
 )
 
 //

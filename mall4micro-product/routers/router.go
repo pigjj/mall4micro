@@ -3,13 +3,13 @@ package routers
 import (
 	"github.com/gin-contrib/gzip"
 	"github.com/gin-gonic/gin"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/conf"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/ctx"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/log"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/middleware"
-	commonHandlers "github.com/jianghaibo12138/mall4micro/mall4micro-common/pkg/handlers"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-product/constant"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-product/pkg/handlers"
+	"github.com/pigjj/mall4micro/mall4micro-common/conf"
+	"github.com/pigjj/mall4micro/mall4micro-common/ctx"
+	"github.com/pigjj/mall4micro/mall4micro-common/log"
+	"github.com/pigjj/mall4micro/mall4micro-common/middleware"
+	commonHandlers "github.com/pigjj/mall4micro/mall4micro-common/pkg/handlers"
+	"github.com/pigjj/mall4micro/mall4micro-product/constant"
+	"github.com/pigjj/mall4micro/mall4micro-product/pkg/handlers"
 )
 
 var logger *log.ZapLogger

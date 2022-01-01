@@ -1,10 +1,10 @@
 package services
 
 import (
-	"github.com/jianghaibo12138/mall4micro/mall4micro-auth/http_dto"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/ctx"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/response"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/utils"
+	"github.com/pigjj/mall4micro/mall4micro-auth/http_dto"
+	"github.com/pigjj/mall4micro/mall4micro-common/ctx"
+	"github.com/pigjj/mall4micro/mall4micro-common/response"
+	"github.com/pigjj/mall4micro/mall4micro-common/utils"
 )
 
 func LoginService(d *http_dto.HttpLoginDTO, gtx *ctx.GinContext) (string, *response.Response, error) {

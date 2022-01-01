@@ -1,8 +1,8 @@
 package handlers
 
 import (
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/ctx"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/response"
+	"github.com/pigjj/mall4micro/mall4micro-common/ctx"
+	"github.com/pigjj/mall4micro/mall4micro-common/response"
 	"time"
 )
 

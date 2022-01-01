@@ -3,9 +3,9 @@ package ctx
 import (
 	"errors"
 	"github.com/gin-gonic/gin"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/log"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/response"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-user/http_dto"
+	"github.com/pigjj/mall4micro/mall4micro-common/log"
+	"github.com/pigjj/mall4micro/mall4micro-common/response"
+	"github.com/pigjj/mall4micro/mall4micro-user/http_dto"
 	"net/http"
 )
 

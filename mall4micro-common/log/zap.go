@@ -2,7 +2,7 @@ package log
 
 import (
 	"fmt"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/utils"
+	"github.com/pigjj/mall4micro/mall4micro-common/utils"
 	rotateLogs "github.com/lestrrat-go/file-rotatelogs"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"

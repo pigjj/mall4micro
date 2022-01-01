@@ -1,9 +1,9 @@
 package mall_sys_user
 
 import (
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/conf"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/conn"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/models"
+	"github.com/pigjj/mall4micro/mall4micro-common/conf"
+	"github.com/pigjj/mall4micro/mall4micro-common/conn"
+	"github.com/pigjj/mall4micro/mall4micro-common/models"
 	"gorm.io/gorm"
 	"testing"
 )

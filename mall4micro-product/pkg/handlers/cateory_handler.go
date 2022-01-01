@@ -1,10 +1,10 @@
 package handlers
 
 import (
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/ctx"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-common/response"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-product/http_dto"
-	"github.com/jianghaibo12138/mall4micro/mall4micro-product/pkg/services"
+	"github.com/pigjj/mall4micro/mall4micro-common/ctx"
+	"github.com/pigjj/mall4micro/mall4micro-common/response"
+	"github.com/pigjj/mall4micro/mall4micro-product/http_dto"
+	"github.com/pigjj/mall4micro/mall4micro-product/pkg/services"
 	"strconv"
 )
 
